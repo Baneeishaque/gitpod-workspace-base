@@ -5,3 +5,6 @@ ports:
     onOpen: ignore
   - port: 6080
     onOpen: open-browser
+tasks:
+  - name: "Insatll BashHub"
+    before: "curl -OL https://bashhub.com/setup && bash setup"

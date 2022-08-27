@@ -1,0 +1,2 @@
+vscode.markdown
+vscode.markdown-language-features

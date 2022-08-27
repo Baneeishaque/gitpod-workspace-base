@@ -1,23 +1,19 @@
-# A x11vnc template on Gitpod
+# Gitpod Full VNC Workspace with [BashHub](https://bashhub.com)
 
-This is a [x11vnc](https://en.wikipedia.org/wiki/X11vnc) template configured for ephemeral development environments on [Gitpod](https://www.gitpod.io/).
+[//]: # "![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/baneeishaque/gitpod-full-vnc-bh/latest)"
+[//]: # "![Docker Image Size (tag)](https://img.shields.io/docker/image-size/baneeishaque/gitpod-full-vnc-bh/latest)"
+[//]: # "![Docker Pulls](https://img.shields.io/docker/pulls/baneeishaque/gitpod-full-vnc-bh)"
+[//]: # "![Docker Stars](https://img.shields.io/docker/stars/baneeishaque/gitpod-full-vnc-bh)"
 
-## Next Steps
+<a href="https://gitpod.io/#https://github.com/Baneeishaque/gitpod-full-vnc-bh"><img src="https://icons-for-free.com/iconfiles/png/512/gitpod-1324440164066425542.png" alt="Gitpod IDE" width="100" height="100"></a>
+<a href="https://github1s.com/Baneeishaque/gitpod-full-vnc-bh"><img src="https://raw.githubusercontent.com/conwnet/github1s/master/resources/images/logo.svg" alt="Github1s Editor" width="100" height="100"></a>
 
-Click the button below to start a new development environment:
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/Baneeishaque/gitpod-full-vnc-bh)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/template-x11-vnc)
+[//]: # "### Docker Hub : [baneeishaque/gitpod-full-vnc-bh](https://hub.docker.com/repository/docker/baneeishaque/gitpod-full-vnc-bh)"
 
-## Get Started With Your Own Project
+### Base Image : [gitpod/workspace-full-vnc](https://hub.docker.com/r/gitpod/workspace-full-vnc)
 
-### A new project
+### Base Image Repo. : [gitpod-io/workspace-images](https://github.com/gitpod-io/workspace-images)
 
-Click the above "Open in Gitpod" button to start a new workspace. Once you're ready to push your first code changes, Gitpod will guide you to fork this project so you own it.
-
-### An existing project
-
-To get started with x11vnc on Gitpod, add a [`.gitpod.yml`](./.gitpod.yml) and [`.gitpod.Dockerfile`](./.gitpod.Dockerfile) file which contains the configuration to improve the developer experience on Gitpod. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
-
-## Notes & caveats
-
-Right click on the black desktop to open the program launcher/start menu.
+[//]: # "[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Baneeishaque/gitpod-full-vnc-bh)"
