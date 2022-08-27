@@ -7,4 +7,4 @@ ports:
     onOpen: open-browser
 tasks:
   - name: "Insatll BashHub"
-    command : "cd /workspace && curl -OL https://bashhub.com/setup && bash setup"
+    command : "cd /workspace && curl -OL https://bashhub.com/setup && bash setup && rm setup"
