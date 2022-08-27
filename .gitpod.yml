@@ -7,4 +7,4 @@ ports:
     onOpen: open-browser
 tasks:
   - name: "Insatll BashHub"
-    before: "curl -OL https://bashhub.com/setup && bash setup"
+    init: "curl -OL https://bashhub.com/setup && bash setup"
