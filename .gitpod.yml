@@ -6,5 +6,7 @@ ports:
   - port: 6080
     onOpen: open-browser
 tasks:
-  - name: "Insatll BashHub"
-    command : "cd /workspace && curl -OL https://bashhub.com/setup && bash setup && rm setup"
+  - name: Insatll BashHub
+    command: cd /workspace && curl -OL https://bashhub.com/setup && bash setup && rm setup
+  - name: Run phpMyAdmin
+    command: sudo php -S 0.0.0.0:80
