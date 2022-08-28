@@ -14,7 +14,7 @@ tasks:
   - name: Insatll BashHub
     command: cd /workspace && curl -OL https://bashhub.com/setup && bash setup && rm setup
   - name: Run phpMyAdmin
-    command: cd /workspace/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
+    command: cd /opt/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
 github:
   prebuilds:
     master: true

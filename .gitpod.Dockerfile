@@ -1,21 +1,18 @@
 FROM gitpod/workspace-full-vnc
 ARG phpMyAdminDownloadUrl=https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
-ARG workDirectory=/workspace
-WORKDIR $workDirectory
 RUN \
 #  pwd \
  wget ${phpMyAdminDownloadUrl} \
-#  && ls -a $workDirectory \
+#  && ls -a $(pwd) \
  && phpMyAdminArchieveFile=$(basename ${phpMyAdminDownloadUrl}) \
 #  && echo $phpMyAdminArchieveFile \
- && unzip $phpMyAdminArchieveFile \
-#  && ls -a $workDirectory \
+ && sudo unzip $phpMyAdminArchieveFile -d /opt/ \
+#  && ls -a /opt/ \
  && rm $phpMyAdminArchieveFile \
-#  && ls -a $workDirectory \
+#  && ls -a $(pwd) \
  && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
-#  && ls -a $workDirectory/$phpMyAdminFolder \
- && cp $phpMyAdminFolder/config.sample.inc.php $phpMyAdminFolder/config.inc.php \
-#  && ls -a $workDirectory/$phpMyAdminFolder \
- && printf "\n\$cfg['AllowArbitraryServer'] = true;" >> $phpMyAdminFolder/config.inc.php \
-#  && ls -a $workDirectory \
-#  && cat $phpMyAdminFolder/config.inc.php
+#  && ls -a /opt/$phpMyAdminFolder \
+ && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
+#  && ls -a /opt/$phpMyAdminFolder \
+ && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null \
+#  && cat /opt/$phpMyAdminFolder/config.inc.php
