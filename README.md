@@ -28,4 +28,4 @@
 
 [//]: # "[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Baneeishaque/gitpod-full-vnc-bh)"
 
-### ***BASH_HUB_ACCESS_TOKEN** & **BASH_HUB_SYSTEM_NAME** are User-Specific Environment Variables set via [account settings](https://gitpod.io/variables).*
+***BASH_HUB_ACCESS_TOKEN** & **BASH_HUB_SYSTEM_NAME** are User-Specific Environment Variables set via [account settings](https://gitpod.io/variables).*
