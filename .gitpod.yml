@@ -7,6 +7,9 @@ ports:
     description: full GUI Virtual Desktop
     port: 6080
     onOpen: open-browser
+  - name: phpMyAdmin
+    port: 80
+    onOpen: open-browser  
 tasks:
   - name: Insatll BashHub
     command: cd /workspace && curl -OL https://bashhub.com/setup && bash setup && rm setup
