@@ -16,6 +16,6 @@ RUN \
 #  && ls -a $workDirectory/$phpMyAdminFolder \
  && cp $phpMyAdminFolder/config.sample.inc.php $phpMyAdminFolder/config.inc.php \
 #  && ls -a $workDirectory/$phpMyAdminFolder \
- && printf "\n$cfg['AllowArbitraryServer'] = true;" >> $phpMyAdminFolder/config.inc.php \
+ && printf "\n\$cfg['AllowArbitraryServer'] = true;" >> $phpMyAdminFolder/config.inc.php \
 #  && ls -a $workDirectory \
 #  && cat $phpMyAdminFolder/config.inc.php
