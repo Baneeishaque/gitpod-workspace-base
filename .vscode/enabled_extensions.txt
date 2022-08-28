@@ -2,4 +2,3 @@ vscode.markdown
 vscode.markdown-language-features
 vscode.github
 GitHub.vscode-pull-request-github
-vscode.php
