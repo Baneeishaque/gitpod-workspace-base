@@ -54,3 +54,9 @@ vscode:
     - vscode.markdown-language-features
     - vscode.github
     - GitHub.vscode-pull-request-github
+    - vscode.merge-conflict
+    - vscode.references-view
+    - vscode.search-result
+    - vscode.docker
+    - redhat.vscode-yaml
+    - vscode.json
