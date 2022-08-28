@@ -19,3 +19,16 @@ github:
     addCheck: false
     addComment: false
     addBadge: true
+jetbrains:
+  intellij:
+    prebuilds:
+      version: both
+  goland:
+    prebuilds:
+      version: both
+  pycharm:
+    prebuilds:
+      version: both
+  phpstorm:
+    prebuilds:
+      version: both
