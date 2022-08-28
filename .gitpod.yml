@@ -24,6 +24,7 @@ tasks:
         && cat $bashHubConfigurationPath \
         && cd /workspace \
         && curl -OL https://bashhub.com/setup \
+        && sed -z 's+\n        if ! ../env/bin/bashhub util update_system_info; then\n            # Run setup if we run into any issues updating our system info\n            ../env/bin/bashhub setup\n        fi++' -i setup \
         && bash setup \
         && rm setup
   - name: Run phpMyAdmin
