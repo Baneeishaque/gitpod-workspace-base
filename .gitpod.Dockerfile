@@ -1,5 +1,7 @@
 FROM gitpod/workspace-full-vnc
 
+ENV TIGERVNC_GEOMETRY=1846x968 
+
 ARG phpMyAdminDownloadUrl=https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
 RUN \
 #  pwd \
