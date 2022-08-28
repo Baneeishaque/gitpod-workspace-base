@@ -16,9 +16,11 @@ tasks:
       eval $(gp env -e)
       echo $BASH_HUB_ACCESS_TOKEN \
         && echo $BASH_HUB_SYSTEM_NAME \
-        && mkdir ${bashHubConfigurationFolder} \
-        && bashHubConfigurationPath=${bashHubConfigurationFolder}/${bashHubConfigurationFile} \
-        && printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" >> $bashHubConfigurationPath \
+        && bashHubConfigurationFolder=$HOME/.bashhub \
+        && bashHubConfigurationFile=config \
+        && mkdir $bashHubConfigurationFolder \
+        && bashHubConfigurationPath=$bashHubConfigurationFolder/$bashHubConfigurationFile \
+        && printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" > $bashHubConfigurationPath \
         && cat $bashHubConfigurationPath \
         && cd /workspace \
         && curl -OL https://bashhub.com/setup \
