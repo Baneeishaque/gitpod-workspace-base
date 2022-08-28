@@ -1,15 +1,5 @@
 FROM gitpod/workspace-full-vnc
 
-ARG bashHubConfigurationFolder=$HOME/.bashhub
-ARG bashHubConfigurationFile=config
-RUN \
- echo $BASH_HUB_ACCESS_TOKEN \
- && echo $BASH_HUB_SYSTEM_NAME \
- && mkdir ${bashHubConfigurationFolder} \
- && bashHubConfigurationPath=${bashHubConfigurationFolder}/${bashHubConfigurationFile} \
- && printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" >> $bashHubConfigurationPath \
- && cat $bashHubConfigurationPath
-
 ARG phpMyAdminDownloadUrl=https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
 RUN \
 #  pwd \
