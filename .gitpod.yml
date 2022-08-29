@@ -1,5 +1,6 @@
 image:
   file: .gitpod.Dockerfile
+
 ports:
   - port: 5900
     onOpen: ignore
@@ -10,6 +11,7 @@ ports:
   - name: phpMyAdmin
     port: 80
     onOpen: open-browser  
+
 tasks:
   - name: Insatll & Configure BashHub
     command: |
@@ -28,8 +30,13 @@ tasks:
         && bash setup \
         && rm setup \
         && exit
-  - name: Run phpMyAdmin
-    command: cd /opt/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
+
+  # - name: Run phpMyAdmin
+  #   command: cd /opt/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
+
+  # - name: Run IntelliJ IDEA
+  #   command: cd /workspace && git clone --depth 1 "https://github.com/Baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio-gh-chrome-intellij-idea.git" intellij-idea-config && rm -rf ~/.config/JetBrains/IntelliJIdea2022.2 && mkdir -p ~/.config/JetBrains && ln -s `pwd`/intellij-idea-config/IntelliJIdea2022.2-config ~/.config/JetBrains/IntelliJIdea2022.2 && rm -rf ~/.local/share/JetBrains/IntelliJIdea2022.2 && mkdir -p ~/.local/share/JetBrains && ln -s `pwd`/intellij-idea-config/IntelliJIdea2022.2-local ~/.local/share/JetBrains/IntelliJIdea2022.2 && rm -rf ~/.local/share/JetBrains/consentOptions && ln -s `pwd`/intellij-idea-config/consentOptions ~/.local/share/JetBrains/consentOptions && cd /usr/local/idea-IU-222.3739.54/bin/ && ./idea.sh
+
 github:
   prebuilds:
     master: true
@@ -39,6 +46,7 @@ github:
     addCheck: false
     addComment: false
     addBadge: true
+
 jetbrains:
   intellij:
     prebuilds:
@@ -52,6 +60,7 @@ jetbrains:
   phpstorm:
     prebuilds:
       version: both
+
 vscode:
   extensions:
     - vscode.markdown
