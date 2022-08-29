@@ -23,3 +23,12 @@ RUN sudo apt update \
  && sudo apt install -y \
      libxtst6 \
  && sudo rm -rf /var/lib/apt/lists/*
+
+ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/103.0.5060.134/chromedriver_linux64.zip
+RUN wget ${chromeDriverDownloadUrl} \
+ && chromeDriverArchieve=$(basename ${chromeDriverDownloadUrl}) \
+ && unzip $chromeDriverArchieve \
+ && rm $chromeDriverArchieve \
+ && chromeDriverExecutable=chromedriver \
+ && sudo mv $chromeDriverExecutable /usr/bin/ \
+ && sudo chmod a+x /usr/bin/$chromeDriverExecutable
