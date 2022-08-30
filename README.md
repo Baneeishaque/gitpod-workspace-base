@@ -12,7 +12,26 @@
 
 <table>
   <tr>
-    <td><a href="https://gitpod.io/#https://github.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea"><img src="https://icons-for-free.com/iconfiles/png/512/gitpod-1324440164066425542.png" alt="Gitpod IDE" width="100" height="100"></a></td><td><a href="https://github1s.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea"><img src="https://raw.githubusercontent.com/conwnet/github1s/master/resources/images/logo.svg" alt="Github1s Editor" width="100" height="100"></a></td><td><a href="https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea"><img src="google-cloud-shell-icon.png" alt="Open in Cloud Shell" width="100" height="100"></a></td>
+    <td>
+      <a href="https://gitpod.io/#https://github.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea">
+        <img src="https://icons-for-free.com/iconfiles/png/512/gitpod-1324440164066425542.png" alt="Open in Gitpod IDE" width="100" height="100">
+      </a>
+    </td>
+    <td>
+      <a href="https://github1s.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea">
+        <img src="https://raw.githubusercontent.com/conwnet/github1s/master/resources/images/logo.svg" alt="Open in Github1s Editor" width="100" height="100">
+      </a>
+    </td>
+    <td>
+      <a href="https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea">
+        <img src="google-cloud-shell-icon.png" alt="Open in Cloud Shell" width="100" height="100">
+      </a>
+    </td>
+        <td>
+      <a href="https://vscode.dev/github.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea">
+        <img src="https://code.visualstudio.com/assets/branding/app-icon.png" alt="Open in Visual Studio Code Web" width="100" height="100">
+      </a>
+    </td>
   </tr>
 </table>
 
