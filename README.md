@@ -1,4 +1,4 @@
-# Gitpod Full VNC Workspace with [BashHub](https://bashhub.com), [phpMyAdmin](https://www.phpmyadmin.net), [IntelliJ IDEA](https://www.jetbrains.com/idea) & [ChromeDriver](https://chromedriver.chromium.org)
+# Gitpod Full VNC Workspace with [BashHub](https://bashhub.com), [phpMyAdmin](https://www.phpmyadmin.net), [IntelliJ IDEA](https://www.jetbrains.com/idea) & [ChromeDriver](https://chromedriver.chromium.org) at 1846x968 Resolution
 
 [//]: # "![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver/latest)"
 [//]: # "![Docker Image Size (tag)](https://img.shields.io/docker/image-size/baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver/latest)"
