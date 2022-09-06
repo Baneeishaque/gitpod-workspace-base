@@ -33,6 +33,9 @@ RUN wget ${chromeDriverDownloadUrl} \
  && sudo mv $chromeDriverExecutable /usr/bin/ \
  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
 
-RUN wget --directory-prefix=$HOME/Applications https://github.com/kapitainsky/RcloneBrowser/releases/download/1.8.0/rclone-browser-1.8.0-a0b66c6-linux-x86_64.AppImage \
- && chmod a+x $HOME/Applications/rclone-browser-1.8.0-a0b66c6-linux-x86_64.AppImage \
- && sudo -v ; curl https://rclone.org/install.sh | sudo bash -s beta
+RUN curl https://rclone.org/install.sh | sudo bash -s beta
+
+RUN sudo apt update \
+ && sudo apt install -y \
+     aria2 \
+ && sudo rm -rf /var/lib/apt/lists/*
