@@ -37,7 +37,7 @@
 
 ---
 
-[//]: # "### Docker Hub : [baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver](https://hub.docker.com/repository/docker/baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver)"
+### Docker Hub : [baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver](https://hub.docker.com/r/baneeishaque/gitpod-full-vnc-bh-phpmyadmin-1846x968-idea-chrome-driver)
 
 ### Base Image : [gitpod/workspace-full-vnc](https://hub.docker.com/r/gitpod/workspace-full-vnc)
 
