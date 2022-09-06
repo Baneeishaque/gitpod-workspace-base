@@ -35,7 +35,7 @@
     </td>
         <td>
       <a href="https://gitpod.io/#prebuild/#https://github.com/Baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver">
-        <img src="https://www.gitpod.io/images/illustrattion-large-dark.pngGitpod " alt="Open in Gitpod IDE with Prebuilds" width="100" height="100">
+        <img src="https://www.gitpod.io/images/illustrattion-large-dark.png" alt="Open in Gitpod IDE with Prebuilds" width="100" height="100">
       </a>
     </td>
   </tr>
