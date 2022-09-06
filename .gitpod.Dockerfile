@@ -32,3 +32,9 @@ RUN wget ${chromeDriverDownloadUrl} \
  && chromeDriverExecutable=chromedriver \
  && sudo mv $chromeDriverExecutable /usr/bin/ \
  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
+
+RUN sudo apt update \
+ && sudo apt install -y \
+ &&  rclone-browser \
+ && sudo rm -rf /var/lib/apt/lists/* \
+ && sudo -v ; curl https://rclone.org/install.sh | sudo bash -s beta
