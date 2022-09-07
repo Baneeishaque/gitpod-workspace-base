@@ -1,6 +1,8 @@
 FROM gitpod/workspace-full-vnc
 
-ENV TIGERVNC_GEOMETRY=1846x968 
+ENV TIGERVNC_GEOMETRY=1846x968
+
+RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 ARG phpMyAdminDownloadUrl=https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
 RUN wget ${phpMyAdminDownloadUrl} \
