@@ -75,3 +75,16 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo apt install -y \
      gh \
  && sudo rm -rf /var/lib/apt/lists/*
+
+ARG eclipseDownloadUrl="https://ftp.yz.yamagata-u.ac.jp/pub/eclipse//technology/epp/downloads/release/2022-09/RC1/eclipse-java-2022-09-RC1-linux-gtk-x86_64.tar.gz"
+RUN wget ${eclipseDownloadUrl} \
+ && eclipseInstallationFile=$(basename ${eclipseDownloadUrl}) \
+ && sudo tar -xvf $eclipseInstallationFile --directory=/usr/local/  --no-same-owner \
+ && rm $eclipseInstallationFile
+# RUN mkdir -p ~/.config/JetBrains/IntelliJIdea2022.2 \
+#  && cp /usr/local/idea-IU-222.3739.54/bin/idea64.vmoptions ~/.config/JetBrains/IntelliJIdea2022.2/ \
+#  && echo "-Dsun.java2d.xrender=false" >> ~/.config/JetBrains/IntelliJIdea2022.2/idea64.vmoptions
+# RUN sudo apt update \
+#  && sudo apt install -y \
+#      libxtst6 \
+#  && sudo rm -rf /var/lib/apt/lists/*
