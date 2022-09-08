@@ -90,3 +90,5 @@ RUN wget ${keyExplorerDownloadUrl} \
      ./$keyExplorerInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile
+
+ ENV KONAN_DATA_DIR=/workspace/.konan/
