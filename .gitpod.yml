@@ -44,6 +44,9 @@ tasks:
   # - name: Open Eclipse
   #   command: cd /usr/local/eclipse/ && ./eclipse
 
+  # - name: Open Key Explorer
+  #   command: kse
+
 github:
   prebuilds:
     master: true

@@ -82,3 +82,11 @@ RUN wget ${eclipseDownloadUrl} \
  && sudo tar -xvf $eclipseInstallationFile --directory=/usr/local/  --no-same-owner \
  && rm $eclipseInstallationFile
 
+ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
+RUN wget ${keyExplorerDownloadUrl} \
+ && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
+ && sudo apt update \
+ && sudo apt install -y \
+     ./$keyExplorerInstallationFile \
+ && sudo rm -rf /var/lib/apt/lists/* \
+ && rm $keyExplorerInstallationFile
