@@ -81,10 +81,4 @@ RUN wget ${eclipseDownloadUrl} \
  && eclipseInstallationFile=$(basename ${eclipseDownloadUrl}) \
  && sudo tar -xvf $eclipseInstallationFile --directory=/usr/local/  --no-same-owner \
  && rm $eclipseInstallationFile
-# RUN mkdir -p ~/.config/JetBrains/IntelliJIdea2022.2 \
-#  && cp /usr/local/idea-IU-222.3739.54/bin/idea64.vmoptions ~/.config/JetBrains/IntelliJIdea2022.2/ \
-#  && echo "-Dsun.java2d.xrender=false" >> ~/.config/JetBrains/IntelliJIdea2022.2/idea64.vmoptions
-# RUN sudo apt update \
-#  && sudo apt install -y \
-#      libxtst6 \
-#  && sudo rm -rf /var/lib/apt/lists/*
+
