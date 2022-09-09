@@ -18,9 +18,6 @@ RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
  && rm $intellijIdeaInstallationFile
-RUN mkdir -p ~/.config/JetBrains/IntelliJIdea2022.2 \
- && cp /usr/local/idea-IU-222.3739.54/bin/idea64.vmoptions ~/.config/JetBrains/IntelliJIdea2022.2/ \
- && echo "-Dsun.java2d.xrender=false" >> ~/.config/JetBrains/IntelliJIdea2022.2/idea64.vmoptions
 RUN sudo apt update \
  && sudo apt install -y \
      libxtst6 \
@@ -43,7 +40,6 @@ RUN sudo apt update \
  && sudo rm -rf /var/lib/apt/lists/*
 
 ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
-
 RUN cd $HOME \
  && wget ${androidCommandLineToolsLinuxDownloadUrl} \
  && androidCommandLineToolsArchieve=$(basename ${androidCommandLineToolsLinuxDownloadUrl}) \
@@ -60,7 +56,6 @@ ARG androidBuildToolsVersion="33.0.0"
 ARG androidSourcesPlatformVersion="android-33-ext3"
 ARG cmakeVersion="3.22.1"
 ARG ndkVersion="25.1.8937393"
-
 RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
  && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
 
@@ -93,12 +88,10 @@ RUN wget ${keyExplorerDownloadUrl} \
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-ARG androidStudioDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.10/android-studio-2022.1.1.10-linux.tar.gz"
+ARG androidStudioCanaryDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.10/android-studio-2022.1.1.10-linux.tar.gz"
 RUN cd $HOME \
- && wget ${androidStudioDownloadUrl} \
- && androidStudioInstallationFile=$(basename ${androidStudioDownloadUrl}) \
- && sudo tar -xvf $androidStudioInstallationFile -C /usr/local/ \
- && rm $androidStudioInstallationFile
-# RUN mkdir -p ~/.config/Google/AndroidStudio2020.3/ \
-#  && cp /usr/local/android-studio/bin/studio64.vmoptions ~/.config/Google/AndroidStudio2020.3/ \
-#  && echo "-Dsun.java2d.xrender=false" >> ~/.config/Google/AndroidStudio2020.3/studio64.vmoptions
+ && wget ${androidStudioCanaryDownloadUrl} \
+ && androidStudioCanaryInstallationFile=$(basename ${androidStudioCanaryDownloadUrl}) \
+ && sudo tar -xvf $androidStudioCanaryInstallationFile -C /usr/local/ \
+ && sudo mv /usr/local/android-studio/ /usr/local/android-studio-canary/ \
+ && rm $androidStudioCanaryInstallationFile
