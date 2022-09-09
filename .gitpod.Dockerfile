@@ -88,13 +88,13 @@ RUN wget ${keyExplorerDownloadUrl} \
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-ARG androidStudioCanaryDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.10/android-studio-2022.1.1.10-linux.tar.gz"
-RUN cd $HOME \
- && wget ${androidStudioCanaryDownloadUrl} \
- && androidStudioCanaryInstallationFile=$(basename ${androidStudioCanaryDownloadUrl}) \
- && sudo tar -xvf $androidStudioCanaryInstallationFile -C /usr/local/ \
- && sudo mv /usr/local/android-studio/ /usr/local/android-studio-canary/ \
- && rm $androidStudioCanaryInstallationFile
+# ARG androidStudioCanaryDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.10/android-studio-2022.1.1.10-linux.tar.gz"
+# RUN cd $HOME \
+#  && wget ${androidStudioCanaryDownloadUrl} \
+#  && androidStudioCanaryInstallationFile=$(basename ${androidStudioCanaryDownloadUrl}) \
+#  && sudo tar -xvf $androidStudioCanaryInstallationFile -C /usr/local/ \
+#  && sudo mv /usr/local/android-studio/ /usr/local/android-studio-canary/ \
+#  && rm $androidStudioCanaryInstallationFile
 
 ARG androidStudioBetaDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.3.1.15/android-studio-2021.3.1.15-linux.tar.gz"
 RUN cd $HOME \
