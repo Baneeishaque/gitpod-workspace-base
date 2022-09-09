@@ -91,4 +91,14 @@ RUN wget ${keyExplorerDownloadUrl} \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile
 
- ENV KONAN_DATA_DIR=/workspace/.konan/
+ENV KONAN_DATA_DIR=/workspace/.konan/
+
+ARG androidStudioDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.26/android-studio-2020.3.1.26-linux.tar.gz"
+RUN cd $HOME \
+ && wget ${androidStudioDownloadUrl} \
+ && androidStudioInstallationFile=$(basename ${androidStudioDownloadUrl}) \
+ && sudo tar -xvf $androidStudioInstallationFile -C /usr/local/ \
+ && rm $androidStudioInstallationFile
+RUN mkdir -p ~/.config/Google/AndroidStudio2020.3/ \
+ && cp /usr/local/android-studio/bin/studio64.vmoptions ~/.config/Google/AndroidStudio2020.3/ \
+ && echo "-Dsun.java2d.xrender=false" >> ~/.config/Google/AndroidStudio2020.3/studio64.vmoptions
