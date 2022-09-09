@@ -103,3 +103,15 @@ RUN cd $HOME \
  && sudo tar -xvf $androidStudioBetaInstallationFile -C /usr/local/ \
  && sudo mv /usr/local/android-studio/ /usr/local/android-studio-beta/ \
  && rm $androidStudioBetaInstallationFile
+
+RUN pip install getgist
+
+RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master
+# RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master \
+#  && poetry completions bash >> ~/.bash_completion
+
+# RUN brew install thefuck \
+#  && echo 'eval "$(thefuck --alias)"' >> ~/.bashrc
+
+# RUN brew install gradle-completion \
+#  && echo '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"' >> ~/.bash_profile

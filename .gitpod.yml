@@ -30,6 +30,8 @@ tasks:
         && bash setup \
         && rm setup \
         && echo "export GH_TOKEN=$(echo $GH_TOKEN)" >> ~/.bashrc \
+        && echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >> ~/.bashrc \
+        && echo "export GETGIST_USER=$(echo $GETGIST_USER)" >> ~/.bashrc \
         && exit
 
   # - name: Run phpMyAdmin
@@ -53,6 +55,15 @@ tasks:
   # - name: Open Android Studio Beta
   #   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio.git" android-studio-config && rm -rf ~/.config/Google && mkdir -p ~/.config/Google && ln -s `pwd`/android-studio-config/AndroidStudio2021.3-config ~/.config/Google/AndroidStudio2021.3 && rm -rf ~/.local/share/Google && mkdir -p ~/.local/share/Google && ln -s `pwd`/android-studio-config/AndroidStudio2021.3-local ~/.local/share/Google/AndroidStudio2021.3 && cd /usr/local/android-studio-beta/bin/ && ./studio.sh
 
+  # - name: Get Gist
+  #   command: getgist <username> <filename>
+
+  # - name: List Gists
+  #   command: lsgists <username>
+
+  # - name: Check Poetry
+  #   command: poetry --version
+  
 github:
   prebuilds:
     master: true
