@@ -12,16 +12,32 @@ RUN wget ${phpMyAdminDownloadUrl} \
  && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
  && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
  && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
- 
+
+ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
+
 ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-2022.2.1.tar.gz"
+ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
  && rm $intellijIdeaInstallationFile
-RUN sudo apt update \
+RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+ && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+ && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+ && wget ${keyExplorerDownloadUrl} \
+ && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
+ && visualStudioCodeInstallationFile=visualStudioCode.deb \
+ && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
+ && wget --output-document=$visualStudioCodeInstallationFile ${visualStudioCodeDownloadUrl} \
+ && wget --output-document=$visualStudioCodeInsidersInstallationFile ${visualStudioCodeInsidersDownloadUrl} \
+ && sudo apt update \
  && sudo apt install -y \
-     libxtst6 \
- && sudo rm -rf /var/lib/apt/lists/*
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile \
+ && sudo rm -rf /var/lib/apt/lists/* \
+ && rm $keyExplorerInstallationFile \
+ && rm $visualStudioCodeInstallationFile \
+ && rm $visualStudioCodeInsidersInstallationFile
 
 ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
 RUN wget ${chromeDriverDownloadUrl} \
@@ -33,11 +49,6 @@ RUN wget ${chromeDriverDownloadUrl} \
  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
 
 RUN curl https://rclone.org/install.sh | sudo bash -s beta
-
-RUN sudo apt update \
- && sudo apt install -y \
-     aria2 \
- && sudo rm -rf /var/lib/apt/lists/*
 
 ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
 RUN cd $HOME \
@@ -63,28 +74,11 @@ ENV ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 
 ENV PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
- && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
- && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
- && sudo apt update \
- && sudo apt install -y \
-     gh \
- && sudo rm -rf /var/lib/apt/lists/*
-
 ARG eclipseDownloadUrl="https://ftp.yz.yamagata-u.ac.jp/pub/eclipse//technology/epp/downloads/release/2022-09/RC1/eclipse-java-2022-09-RC1-linux-gtk-x86_64.tar.gz"
 RUN wget ${eclipseDownloadUrl} \
  && eclipseInstallationFile=$(basename ${eclipseDownloadUrl}) \
  && sudo tar -xvf $eclipseInstallationFile --directory=/usr/local/  --no-same-owner \
  && rm $eclipseInstallationFile
-
-ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
-RUN wget ${keyExplorerDownloadUrl} \
- && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
- && sudo apt update \
- && sudo apt install -y \
-     ./$keyExplorerInstallationFile \
- && sudo rm -rf /var/lib/apt/lists/* \
- && rm $keyExplorerInstallationFile
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 

@@ -32,6 +32,8 @@ tasks:
         && echo "export GH_TOKEN=$(echo $GH_TOKEN)" >> ~/.bashrc \
         && echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >> ~/.bashrc \
         && echo "export GETGIST_USER=$(echo $GETGIST_USER)" >> ~/.bashrc \
+        && echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >> ~/.bashrc \
+        && echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >> ~/.bashrc \
         && exit
 
   # - name: Run phpMyAdmin
@@ -63,7 +65,16 @@ tasks:
 
   # - name: Check Poetry
   #   command: poetry --version
-  
+
+  # - name: Check tree
+  #   command: tree --version
+
+  # - name: Check VS Code
+  #   command: code --version
+
+  # - name: Check VS Code Insiders
+  #   command: code-insiders --version
+
 github:
   prebuilds:
     master: true
