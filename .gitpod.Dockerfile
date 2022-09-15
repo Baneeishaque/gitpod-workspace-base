@@ -74,7 +74,7 @@ ENV ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 
 ENV PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-ARG eclipseDownloadUrl="https://ftp.yz.yamagata-u.ac.jp/pub/eclipse//technology/epp/downloads/release/2022-09/RC1/eclipse-java-2022-09-RC1-linux-gtk-x86_64.tar.gz"
+ARG eclipseDownloadUrl="https://ftp.yz.yamagata-u.ac.jp/pub/eclipse/technology/epp/downloads/release/2022-09/R/eclipse-java-2022-09-R-linux-gtk-x86_64.tar.gz"
 RUN wget ${eclipseDownloadUrl} \
  && eclipseInstallationFile=$(basename ${eclipseDownloadUrl}) \
  && sudo tar -xvf $eclipseInstallationFile --directory=/usr/local/  --no-same-owner \
