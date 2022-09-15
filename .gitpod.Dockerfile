@@ -15,7 +15,7 @@ RUN wget ${phpMyAdminDownloadUrl} \
 
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 
-ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-2022.2.1.tar.gz"
+ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz"
 ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
 RUN wget ${intellijIdeaDownloadUrl} \
