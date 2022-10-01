@@ -34,6 +34,7 @@ tasks:
         && echo "export GETGIST_USER=$(echo $GETGIST_USER)" >> ~/.bashrc \
         && echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >> ~/.bashrc \
         && echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >> ~/.bashrc \
+        && docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD) \
         && exit
 
   # - name: Run phpMyAdmin
