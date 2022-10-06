@@ -14,10 +14,10 @@ RUN wget ${phpMyAdminDownloadUrl} \
  && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
 
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
-
 ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-2022.2.2.tar.gz"
 ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
+ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.1_amd64.deb"
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
@@ -31,13 +31,16 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
  && wget --output-document=$visualStudioCodeInstallationFile ${visualStudioCodeDownloadUrl} \
  && wget --output-document=$visualStudioCodeInsidersInstallationFile ${visualStudioCodeInsidersDownloadUrl} \
+ && wget ${dBeaverDownloadUrl} \
+ && dBeaverInstallationFile=$(basename ${dBeaverDownloadUrl}) \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
  && rm $visualStudioCodeInstallationFile \
- && rm $visualStudioCodeInsidersInstallationFile
+ && rm $visualStudioCodeInsidersInstallationFile \
+ && rm $dBeaverInstallationFile
 
 ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
 RUN wget ${chromeDriverDownloadUrl} \
