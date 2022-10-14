@@ -112,3 +112,9 @@ RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github
 
 # RUN brew install gradle-completion \
 #  && echo '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"' >> ~/.bash_profile
+
+ARG pyCharmDownloadUrl="https://download.jetbrains.com/python/pycharm-professional-223.6160.21.tar.gz"
+RUN wget ${pyCharmDownloadUrl} \
+ && pyCharmInstallationFile=$(basename ${pyCharmDownloadUrl}) \
+ && sudo tar -xvf $pyCharmInstallationFile -C /usr/local/ \
+ && rm $pyCharmInstallationFile
