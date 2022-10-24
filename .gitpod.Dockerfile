@@ -157,5 +157,5 @@ RUN cd $HOME \
  && unzip $dexToolsArchieveFile \
  && rm $dexToolsArchieveFile \
 #  && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/')
- && $(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/') > $HOME/dexToolsFolder
+ && echo $(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/') > $HOME/dexToolsFolder
 #  && echo "export PATH=$HOME/$(echo $dexToolsFolder):$HOME/$(echo $dexToolsFolder)/bin:$PATH" >> $HOME/.bashrc
