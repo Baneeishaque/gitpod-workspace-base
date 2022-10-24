@@ -154,8 +154,8 @@ ARG dexToolsDownloadUrl="https://github.com/pxb1988/dex2jar/releases/download/v2
 RUN cd $HOME \
  && wget ${dexToolsDownloadUrl} \
  && dexToolsArchieveFile=$(basename ${dexToolsDownloadUrl}) \
- && unzip $dexToolsArchieveFile \
+ && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/')
+ && unzip $dexToolsArchieveFile -d $dexToolsFolder \
  && rm $dexToolsArchieveFile \
-#  && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/')
- && echo $(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/') > $HOME/dexToolsFolder
+ && echo $dexToolsFolder > $HOME/dexToolsFolder
 #  && echo "export PATH=$HOME/$(echo $dexToolsFolder):$HOME/$(echo $dexToolsFolder)/bin:$PATH" >> $HOME/.bashrc
