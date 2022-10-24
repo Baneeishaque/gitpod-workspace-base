@@ -146,7 +146,8 @@ RUN cd $HOME \
  && jadxFolder=$(echo $jadxArchieveFile | sed 's/\(.*\)\..*/\1/') \
  && unzip $jadxArchieveFile -d $jadxFolder \
  && rm $jadxArchieveFile \
- && sed -i 's/DEFAULT_JVM_OPTS=""/DEFAULT_JVM_OPTS='"'"'"-Dsun.java2d.xrender=false"'"'"'/g' $HOME/$jadxFolder/bin/jadx-gui
+ && sed -i 's/DEFAULT_JVM_OPTS=""/DEFAULT_JVM_OPTS='"'"'"-Dsun.java2d.xrender=false"'"'"'/g' $HOME/$jadxFolder/bin/jadx-gui \
+ && echo $jadxFolder > $HOME/jadxFolder
 #  && echo "export PATH=$HOME/$(echo $jadxFolder)/bin:$PATH" >> $HOME/.bashrc
 
 ARG dexToolsDownloadUrl="https://github.com/pxb1988/dex2jar/releases/download/v2.2-SNAPSHOT-2021-10-31/dex-tools-2.2-SNAPSHOT-2021-10-31.zip"
@@ -155,5 +156,6 @@ RUN cd $HOME \
  && dexToolsArchieveFile=$(basename ${dexToolsDownloadUrl}) \
  && unzip $dexToolsArchieveFile \
  && rm $dexToolsArchieveFile \
- && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/')
+#  && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/')
+ && $(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/') > $HOME/dexToolsFolder
 #  && echo "export PATH=$HOME/$(echo $dexToolsFolder):$HOME/$(echo $dexToolsFolder)/bin:$PATH" >> $HOME/.bashrc
