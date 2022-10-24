@@ -140,7 +140,6 @@ RUN cd $HOME \
 ENV PATH=$HOME/apktool:$PATH
 
 ARG jadxDownloadUrl="https://github.com/skylot/jadx/releases/download/v1.4.5/jadx-1.4.5.zip"
-ARG dexToolsDownloadUrl="https://github.com/pxb1988/dex2jar/releases/download/v2.2-SNAPSHOT-2021-10-31/dex-tools-2.2-SNAPSHOT-2021-10-31.zip"
 RUN cd $HOME \
  && wget ${jadxDownloadUrl} \
  && jadxArchieveFile=$(basename ${jadxDownloadUrl}) \
@@ -148,9 +147,12 @@ RUN cd $HOME \
  && unzip $jadxArchieveFile -d $jadxFolder \
  && rm $jadxArchieveFile \
  && sed -i 's/DEFAULT_JVM_OPTS=""/DEFAULT_JVM_OPTS='"'"'"-Dsun.java2d.xrender=false"'"'"'/g' $HOME/$jadxFolder/bin/jadx-gui \
+ && echo $jadxFolder > $HOME/jadxFolder
+
+ARG dexToolsDownloadUrl="https://github.com/pxb1988/dex2jar/releases/download/v2.2-SNAPSHOT-2021-10-31/dex-tools-2.2-SNAPSHOT-2021-10-31.zip"
+RUN cd $HOME \
  && wget ${dexToolsDownloadUrl} \
  && dexToolsArchieveFile=$(basename ${dexToolsDownloadUrl}) \
  && unzip $dexToolsArchieveFile \
  && rm $dexToolsArchieveFile \
- && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/' | cut -d '-' -f1,2,3,4) \
- && echo "export PATH=$HOME/$(echo $dexToolsFolder):$HOME/$(echo $dexToolsFolder)/bin:$HOME/$(echo $jadxFolder)/bin:$PATH" >> $HOME/.bashrc
+ && echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/' | cut -d '-' -f1,2,3,4 > $HOME/dexToolsFolder

@@ -35,6 +35,8 @@ tasks:
         && echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >> ~/.bashrc \
         && echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >> ~/.bashrc \
         && docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD) \
+        && echo "export PATH=$HOME/$(cat $HOME/dexToolsFolder):$HOME/$(cat $HOME/dexToolsFolder)/bin:$HOME/$(cat $HOME/jadxFolder)/bin:$PATH" >> ~/.bashrc \
+        && rm $HOME/dexToolsFolder $HOME/jadxFolder \
         && exit
 
   # - name: Run phpMyAdmin
