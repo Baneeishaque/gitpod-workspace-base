@@ -17,7 +17,7 @@ ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/relea
 ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.6646.99.tar.gz"
 ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
-ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.2_amd64.deb"
+ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.3_amd64.deb"
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
