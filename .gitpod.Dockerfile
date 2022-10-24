@@ -13,36 +13,40 @@ RUN wget ${phpMyAdminDownloadUrl} \
  && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
  && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
 
-ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.6646.99.tar.gz"
-ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
-ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.3_amd64.deb"
- 
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
  && rm $intellijIdeaInstallationFile
+
+ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
+ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
+ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.3_amd64.deb"
+ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
  && wget ${keyExplorerDownloadUrl} \
  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
  && visualStudioCodeInstallationFile=visualStudioCode.deb \
- && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
  && wget --output-document=$visualStudioCodeInstallationFile ${visualStudioCodeDownloadUrl} \
+ && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
  && wget --output-document=$visualStudioCodeInsidersInstallationFile ${visualStudioCodeInsidersDownloadUrl} \
  && wget ${dBeaverDownloadUrl} \
  && dBeaverInstallationFile=$(basename ${dBeaverDownloadUrl}) \
+ && wget ${gitKrakenDownloadUrl} \
+ && gitKrakenInstallationFile=$(basename ${gitKrakenDownloadUrl}) \
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
  && rm $visualStudioCodeInstallationFile \
  && rm $visualStudioCodeInsidersInstallationFile \
- && rm $dBeaverInstallationFile
+ && rm $dBeaverInstallationFile \
+ && rm $gitKrakenInstallationFile
 
 ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
 RUN wget ${chromeDriverDownloadUrl} \
