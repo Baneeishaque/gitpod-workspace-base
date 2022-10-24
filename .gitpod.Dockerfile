@@ -18,6 +18,7 @@ ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.6646
 ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
 ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.3_amd64.deb"
+ 
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
@@ -119,3 +120,36 @@ RUN wget ${pyCharmDownloadUrl} \
  && pyCharmInstallationFile=$(basename ${pyCharmDownloadUrl}) \
  && sudo tar -xvf $pyCharmInstallationFile -C /usr/local/ \
  && rm $pyCharmInstallationFile
+
+RUN cd $HOME \
+ && wget https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-1.6.6.jar
+
+ARG apktoolDownloadUrl="https://github.com/iBotPeaches/Apktool/releases/download/v2.6.1/apktool_2.6.1.jar"
+RUN cd $HOME \
+ && mkdir apktool \
+ && cd apktool \
+ && wget https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool ${apktoolDownloadUrl} \
+ && apktoolJarFile=$(basename ${apktoolDownloadUrl}) \
+ && mv $apktoolJarFile apktool.jar \
+ && chmod +x apktool apktool.jar
+
+ENV PATH=$HOME/apktool:$PATH
+
+ARG jadxDownloadUrl="https://github.com/skylot/jadx/releases/download/v1.4.5/jadx-1.4.5.zip"
+RUN cd $HOME \
+ && wget ${jadxDownloadUrl} \
+ && jadxArchieveFile=$(basename ${jadxDownloadUrl}) \
+ && jadxFolder=$(echo $jadxArchieveFile | sed 's/\(.*\)\..*/\1/') \
+ && unzip $jadxArchieveFile -d $jadxFolder \
+ && rm $jadxArchieveFile \
+ && sed -i 's/DEFAULT_JVM_OPTS=""/DEFAULT_JVM_OPTS='"'"'"-Dsun.java2d.xrender=false"'"'"'/g' $HOME/$jadxFolder/bin/jadx-gui \
+ && echo "export PATH=$HOME/$(echo $jadxFolder)/bin:$PATH" >> $HOME/.bashrc
+
+ARG dexToolsDownloadUrl="https://github.com/pxb1988/dex2jar/releases/download/v2.2-SNAPSHOT-2021-10-31/dex-tools-2.2-SNAPSHOT-2021-10-31.zip"
+RUN cd $HOME \
+ && wget ${dexToolsDownloadUrl} \
+ && dexToolsArchieveFile=$(basename ${dexToolsDownloadUrl}) \
+ && unzip $dexToolsArchieveFile \
+ && rm $dexToolsArchieveFile \
+ && dexToolsFolder=$(echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/') \
+ && echo "export PATH=$HOME/$(echo $dexToolsFolder):$HOME/$(echo $dexToolsFolder)/bin:$PATH" >> $HOME/.bashrc
