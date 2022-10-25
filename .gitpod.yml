@@ -40,7 +40,8 @@ tasks:
   # - name: Setup JADX & dex2jar
   #   command: |
   #     echo "export PATH=$HOME/$(cat $HOME/dexToolsFolder):$HOME/$(cat $HOME/dexToolsFolder)/bin:$HOME/$(cat $HOME/jadxFolder)/bin:$PATH" >> ~/.bashrc \
-  #     && rm $HOME/dexToolsFolder $HOME/jadxFolder
+  #     && rm $HOME/dexToolsFolder $HOME/jadxFolder \
+  #     && source ~/.bashrc
 
   # - name: Run phpMyAdmin
   #   command: cd /opt/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
