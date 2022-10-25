@@ -91,7 +91,7 @@ RUN wget ${eclipseDownloadUrl} \
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-ARG androidStudioCanaryDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.10/android-studio-2022.1.1.10-linux.tar.gz"
+ARG androidStudioCanaryDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.2.1.6/android-studio-2022.2.1.6-linux.tar.gz"
 RUN cd $HOME \
  && wget ${androidStudioCanaryDownloadUrl} \
  && androidStudioCanaryInstallationFile=$(basename ${androidStudioCanaryDownloadUrl}) \
