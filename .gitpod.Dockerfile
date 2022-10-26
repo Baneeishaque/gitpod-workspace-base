@@ -13,7 +13,7 @@ RUN wget ${phpMyAdminDownloadUrl} \
  && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
  && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
 
-ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.6646.99.tar.gz"
+ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.7126.7.tar.gz"
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
