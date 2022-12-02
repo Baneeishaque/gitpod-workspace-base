@@ -22,7 +22,7 @@ RUN wget ${intellijIdeaDownloadUrl} \
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
-ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.3_amd64.deb"
+ARG dBeaverDownloadUrl="https://dbeaver.com/files/ea/ultimate/dbeaver-ue_22.2.5_amd64.deb"
 ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
