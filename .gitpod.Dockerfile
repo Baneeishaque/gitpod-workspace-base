@@ -4,15 +4,6 @@ ENV TIGERVNC_GEOMETRY=1846x968
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-ARG phpMyAdminDownloadUrl=https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
-RUN wget ${phpMyAdminDownloadUrl} \
- && phpMyAdminArchieveFile=$(basename ${phpMyAdminDownloadUrl}) \
- && sudo unzip $phpMyAdminArchieveFile -d /opt/ \
- && rm $phpMyAdminArchieveFile \
- && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
- && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
- && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
-
 ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.7126.7.tar.gz"
 RUN wget ${intellijIdeaDownloadUrl} \
  && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
@@ -48,7 +39,15 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && rm $visualStudioCodeInstallationFile \
  && rm $visualStudioCodeInsidersInstallationFile \
  && rm $dBeaverInstallationFile \
- && rm $gitKrakenInstallationFile
+ && rm $gitKrakenInstallationFile \
+ && phpMyAdminDownloadUrl=$(wget -O - https://www.phpmyadmin.net/downloads | pup 'a.download_popup attr{href}' | grep --max-count=1 'english.zip') \
+ && wget $phpMyAdminDownloadUrl \
+ && phpMyAdminArchieveFile=$(basename $phpMyAdminDownloadUrl) \
+ && sudo unzip $phpMyAdminArchieveFile -d /opt/ \
+ && rm $phpMyAdminArchieveFile \
+ && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
+ && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
+ && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
 
 ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
 RUN wget ${chromeDriverDownloadUrl} \
