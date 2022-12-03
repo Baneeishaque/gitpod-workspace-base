@@ -18,9 +18,9 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && wget ${keyExplorerDownloadUrl} \
  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
  && visualStudioCodeInstallationFile=visualStudioCode.deb \
- && wget --output-document=$visualStudioCodeInstallationFile https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 \
+ && wget --output-document=$visualStudioCodeInstallationFile "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" \
  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
- && wget --output-document=$visualStudioCodeInsidersInstallationFile https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64 \
+ && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
  && brew install pup \
  && dBeaverDownloadUrl=$(echo ${dBeaverDownloadPageUrl}/$(wget -O - ${dBeaverDownloadPageUrl} | pup 'table.s3_listing_files tbody tr td a attr{href}' | grep '.deb')) \
  && wget $dBeaverDownloadUrl \
@@ -105,7 +105,7 @@ RUN cd $HOME \
  && sudo mv /usr/local/android-studio/ /usr/local/android-studio-beta/ \
  && rm $androidStudioBetaInstallationFile
 
-RUN pip install getgist
+RUN pip install --upgrade pip && pip install getgist
 
 RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master
 # RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master \
