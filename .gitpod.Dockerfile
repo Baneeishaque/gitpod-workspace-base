@@ -4,15 +4,12 @@ ENV TIGERVNC_GEOMETRY=1846x968
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-ARG intellijIdeaDownloadUrl="https://download.jetbrains.com/idea/ideaIU-223.7126.7.tar.gz"
-RUN wget ${intellijIdeaDownloadUrl} \
- && intellijIdeaInstallationFile=$(basename ${intellijIdeaDownloadUrl}) \
+RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
+ && wget --output-document=$intellijIdeaInstallationFile "https://download.jetbrains.com/product?code=IIU&latest&distribution=linux" \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
  && rm $intellijIdeaInstallationFile
 
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
-ARG visualStudioCodeDownloadUrl="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-ARG visualStudioCodeInsidersDownloadUrl="https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
 ARG dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
 ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -21,9 +18,9 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && wget ${keyExplorerDownloadUrl} \
  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
  && visualStudioCodeInstallationFile=visualStudioCode.deb \
- && wget --output-document=$visualStudioCodeInstallationFile ${visualStudioCodeDownloadUrl} \
+ && wget --output-document=$visualStudioCodeInstallationFile https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 \
  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
- && wget --output-document=$visualStudioCodeInsidersInstallationFile ${visualStudioCodeInsidersDownloadUrl} \
+ && wget --output-document=$visualStudioCodeInsidersInstallationFile https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64 \
  && brew install pup \
  && dBeaverDownloadUrl=$(echo ${dBeaverDownloadPageUrl}/$(wget -O - ${dBeaverDownloadPageUrl} | pup 'table.s3_listing_files tbody tr td a attr{href}' | grep '.deb')) \
  && wget $dBeaverDownloadUrl \
