@@ -33,7 +33,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./peaZipInstallationFile p7zip-full \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
  && rm $visualStudioCodeInstallationFile \
