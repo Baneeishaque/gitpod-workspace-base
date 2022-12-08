@@ -12,6 +12,7 @@ RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 ARG dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
 ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
+ARG peaZipDownloadUrl="https://downloads.sourceforge.net/project/peazip/8.9.0/peazip_8.9.0.LINUX.GTK2-1_amd64.deb"
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
@@ -27,10 +28,12 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && dBeaverInstallationFile=$(basename $dBeaverDownloadUrl) \
  && wget ${gitKrakenDownloadUrl} \
  && gitKrakenInstallationFile=$(basename ${gitKrakenDownloadUrl}) \
+ && wget ${peaZipDownloadUrl} \
+ && peaZipInstallationFile=$(basename ${peaZipDownloadUrl}) \
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile file-roller p7zip-full \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./peaZipInstallationFile p7zip-full \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
  && rm $visualStudioCodeInstallationFile \
