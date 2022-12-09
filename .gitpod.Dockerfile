@@ -40,6 +40,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && rm $visualStudioCodeInsidersInstallationFile \
  && rm $dBeaverInstallationFile \
  && rm $gitKrakenInstallationFile \
+ && rm $peaZipInstallationFile \
  && phpMyAdminDownloadUrl=$(wget -O - https://www.phpmyadmin.net/downloads | pup 'a.download_popup attr{href}' | grep --max-count=1 'english.zip') \
  && wget $phpMyAdminDownloadUrl \
  && phpMyAdminArchieveFile=$(basename $phpMyAdminDownloadUrl) \
