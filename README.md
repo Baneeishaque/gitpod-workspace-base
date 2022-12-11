@@ -46,4 +46,4 @@
 
 ---
 
-***BASH_HUB_ACCESS_TOKEN**, **BASH_HUB_SYSTEM_NAME**, **GH_TOKEN**, **GETGIST_USER**, **DOCKER_HUB_USERNAME** & **DOCKER_HUB_PASSWORD** are User-Specific Environment Variables set via [account settings](https://gitpod.io/variables).*
+***BASH_HUB_ACCESS_TOKEN**, **BASH_HUB_SYSTEM_NAME**, **GH_TOKEN**, **GETGIST_USER**, **DOCKER_HUB_USERNAME**, **DOCKER_HUB_PASSWORD** & **EDGE_CONFIGURATION_REPOSITORY_URL** are User-Specific Environment Variables set via [account settings](https://gitpod.io/variables).*

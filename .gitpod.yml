@@ -35,6 +35,9 @@ tasks:
         && echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >> ~/.bashrc \
         && echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >> ~/.bashrc \
         && docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD) \
+        && git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL) \
+        && rm -rf ~/.config/microsoft-edge-dev \
+        && ln -s `pwd`/microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev \
         && exit
 
   # - name: Setup JADX & dex2jar
