@@ -160,3 +160,8 @@ RUN cd $HOME \
  && unzip $dexToolsArchieveFile \
  && rm $dexToolsArchieveFile \
  && echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/' | cut -d '-' -f1,2,3,4 > $HOME/dexToolsFolder
+
+RUN cd $HOME \
+ && wget "https://gist.githubusercontent.com/SergLam/3adb64051a1c8ebd8330191aedcefe47/raw/7936d8acde59cc31f487bc455904e3942d7ecbda/xcode-downloader.rb" \
+ && chmod a+x xcode-downloader.rb \
+ && mv xcode-downloader.rb /usr/local/bin/
