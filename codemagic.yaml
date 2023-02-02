@@ -1,0 +1,11 @@
+workflows:
+  build-docker-image:
+    name: Build docker Image
+    scripts:
+      - name: Downloading macOS Monterey 12.4 Beta 4
+        script: tag=$(echo $(basename $(pwd)) | tr '[:upper:]' '[:lower:]') &&  docker --debug build --file .gitpod.Dockerfile --tag baneeishaque/$(echo $tag):latest . && docker --debug push baneeishaque/$(echo $tag):latest
+    publishing:
+      email:
+        recipients:
+          - baneeishaque@gmail.com
+          - baneeishaque@hotmail.com
