@@ -1,6 +1,7 @@
 workflows:
   build-gitpod-docker-image:
     name: Build Gitpod Docker Image
+    instance_type: linux
     scripts:
       - name: Building Gitpod Docker Image
         script: tag=$(echo $(basename $(pwd)) | tr '[:upper:]' '[:lower:]') &&  docker --debug build --file .gitpod.Dockerfile --tag baneeishaque/$(echo $tag):latest . && docker --debug push baneeishaque/$(echo $tag):latest
