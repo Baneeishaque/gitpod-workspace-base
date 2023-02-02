@@ -1,8 +1,8 @@
 workflows:
-  build-docker-image:
-    name: Build docker Image
+  build-gitpod-docker-image:
+    name: Build Gitpod Docker Image
     scripts:
-      - name: Downloading macOS Monterey 12.4 Beta 4
+      - name: Building Gitpod Docker Image
         script: tag=$(echo $(basename $(pwd)) | tr '[:upper:]' '[:lower:]') &&  docker --debug build --file .gitpod.Dockerfile --tag baneeishaque/$(echo $tag):latest . && docker --debug push baneeishaque/$(echo $tag):latest
     publishing:
       email:
