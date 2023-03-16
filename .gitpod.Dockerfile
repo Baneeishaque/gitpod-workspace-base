@@ -164,7 +164,7 @@ RUN cd $HOME \
 RUN cd $HOME \
  && wget "https://gist.githubusercontent.com/SergLam/3adb64051a1c8ebd8330191aedcefe47/raw/7936d8acde59cc31f487bc455904e3942d7ecbda/xcode-downloader.rb" \
  && chmod a+x xcode-downloader.rb \
- && mv xcode-downloader.rb /usr/local/bin/
+ && sudo mv xcode-downloader.rb /usr/local/bin/
 
 RUN sudo systemctl enable squid \
  && sudo sed -i 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf \
