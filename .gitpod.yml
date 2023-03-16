@@ -85,6 +85,12 @@ tasks:
   # - name: Check VS Code Insiders
   #   command: code-insiders --version
 
+  # - name: Setupe Edge
+  #   command: cd /workspace && rm -rf /workspace/microsoft-edge-config-private && git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL) && cd /workspace && rm -rf ~/.config/microsoft-edge-dev && ln -s `pwd`/microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
+
+  # - name: Run Squid Proxy Server
+  #   command: sudo service squid restart && sudo service squid status
+
 github:
   prebuilds:
     master: true
