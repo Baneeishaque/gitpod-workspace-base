@@ -75,13 +75,13 @@ RUN cd $HOME \
 
 ENV JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 
-ARG androidPlatformVersion="android-33"
-ARG androidBuildToolsVersion="33.0.0"
-ARG androidSourcesPlatformVersion="android-33-ext3"
-ARG cmakeVersion="3.22.1"
-ARG ndkVersion="25.1.8937393"
-RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
- && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
+# ARG androidPlatformVersion="android-33"
+# ARG androidBuildToolsVersion="33.0.0"
+# ARG androidSourcesPlatformVersion="android-33-ext3"
+# ARG cmakeVersion="3.22.1"
+# ARG ndkVersion="25.1.8937393"
+# RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
+#  && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
 
 ENV ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 
@@ -103,13 +103,13 @@ RUN cd $HOME \
  && sudo mv /usr/local/android-studio/ /usr/local/android-studio-canary/ \
  && rm $androidStudioCanaryInstallationFile
 
-ARG androidStudioBetaDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.3.1.15/android-studio-2021.3.1.15-linux.tar.gz"
-RUN cd $HOME \
- && wget ${androidStudioBetaDownloadUrl} \
- && androidStudioBetaInstallationFile=$(basename ${androidStudioBetaDownloadUrl}) \
- && sudo tar -xvf $androidStudioBetaInstallationFile -C /usr/local/ \
- && sudo mv /usr/local/android-studio/ /usr/local/android-studio-beta/ \
- && rm $androidStudioBetaInstallationFile
+# ARG androidStudioBetaDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.3.1.15/android-studio-2021.3.1.15-linux.tar.gz"
+# RUN cd $HOME \
+#  && wget ${androidStudioBetaDownloadUrl} \
+#  && androidStudioBetaInstallationFile=$(basename ${androidStudioBetaDownloadUrl}) \
+#  && sudo tar -xvf $androidStudioBetaInstallationFile -C /usr/local/ \
+#  && sudo mv /usr/local/android-studio/ /usr/local/android-studio-beta/ \
+#  && rm $androidStudioBetaInstallationFile
 
 RUN pip install --upgrade pip && pip install getgist
 
