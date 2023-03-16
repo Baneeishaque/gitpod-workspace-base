@@ -35,7 +35,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
  && rm $visualStudioCodeInstallationFile \
@@ -165,3 +165,7 @@ RUN cd $HOME \
  && wget "https://gist.githubusercontent.com/SergLam/3adb64051a1c8ebd8330191aedcefe47/raw/7936d8acde59cc31f487bc455904e3942d7ecbda/xcode-downloader.rb" \
  && chmod a+x xcode-downloader.rb \
  && mv xcode-downloader.rb /usr/local/bin/
+
+RUN sudo systemctl enable squid \
+ && sudo sed -i 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf \
+ && sudo service squid restart
