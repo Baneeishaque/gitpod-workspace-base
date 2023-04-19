@@ -169,3 +169,6 @@ RUN cd $HOME \
 RUN sudo systemctl enable squid \
  && sudo sed -i 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf \
  && sudo service squid restart
+
+RUN brew tap leoafarias/fvm \
+ && brew install fvm
