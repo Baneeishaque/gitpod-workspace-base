@@ -172,3 +172,5 @@ RUN sudo systemctl enable squid \
 
 RUN brew tap leoafarias/fvm \
  && brew install fvm
+
+ENV PATH=$HOME/fvm/default/bin:$PATH
