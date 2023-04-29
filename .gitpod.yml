@@ -16,14 +16,10 @@ tasks:
   - name: Insatll & Configure BashHub
     command: |
       eval $(gp env -e)
-      echo $BASH_HUB_ACCESS_TOKEN \
-        && echo $BASH_HUB_SYSTEM_NAME \
-        && bashHubConfigurationFolder=$HOME/.bashhub \
-        && bashHubConfigurationFile=config \
+      bashHubConfigurationFolder=$HOME/.bashhub \
         && mkdir $bashHubConfigurationFolder \
-        && bashHubConfigurationPath=$bashHubConfigurationFolder/$bashHubConfigurationFile \
+        && bashHubConfigurationPath=$bashHubConfigurationFolder/config \
         && printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" > $bashHubConfigurationPath \
-        && cat $bashHubConfigurationPath \
         && cd /workspace \
         && curl -OL https://bashhub.com/setup \
         && sed -z 's+\n        if ! ../env/bin/bashhub util update_system_info; then\n            # Run setup if we run into any issues updating our system info\n            ../env/bin/bashhub setup\n        fi++' -i setup \
