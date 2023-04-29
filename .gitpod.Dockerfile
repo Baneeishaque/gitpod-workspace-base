@@ -1,7 +1,5 @@
 FROM gitpod/workspace-full-vnc
 
-ENV TIGERVNC_GEOMETRY=1846x968
-
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
@@ -174,3 +172,6 @@ RUN brew tap leoafarias/fvm \
  && brew install fvm
 
 ENV PATH=$HOME/fvm/default/bin:$PATH
+
+COPY tigerVncGeometry.txt $HOME
+RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
