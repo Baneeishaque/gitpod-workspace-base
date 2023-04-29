@@ -1,7 +1,6 @@
 FROM gitpod/workspace-full-vnc
 
-# ENV TIGERVNC_GEOMETRY=1846x968
-RUN export TIGERVNC_GEOMETRY=$(cat tigerVncGeometry.txt)
+ENV TIGERVNC_GEOMETRY=1846x968
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
