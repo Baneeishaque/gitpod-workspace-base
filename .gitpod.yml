@@ -37,56 +37,56 @@ tasks:
         && ln -s `pwd`/microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev \
         && exit
 
-  # - name: Setup JADX & dex2jar
-  #   command: |
-  #     echo "export PATH=$HOME/$(cat $HOME/dexToolsFolder):$HOME/$(cat $HOME/dexToolsFolder)/bin:$HOME/$(cat $HOME/jadxFolder)/bin:$PATH" >> ~/.bashrc \
-  #     && rm $HOME/dexToolsFolder $HOME/jadxFolder \
-  #     && source ~/.bashrc
+# - name: Setup JADX & dex2jar
+#   command: |
+#     echo "export PATH=$HOME/$(cat $HOME/dexToolsFolder):$HOME/$(cat $HOME/dexToolsFolder)/bin:$HOME/$(cat $HOME/jadxFolder)/bin:$PATH" >> ~/.bashrc \
+#     && rm $HOME/dexToolsFolder $HOME/jadxFolder \
+#     && source ~/.bashrc
 
-  # - name: Run phpMyAdmin
-  #   command: cd /opt/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
+# - name: Run phpMyAdmin
+#   command: cd /opt/phpMyAdmin-5.2.0-all-languages && sudo php -S 0.0.0.0:80
 
-  # - name: Run IntelliJ IDEA
-  #   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio-gh-chrome-intellij-idea.git" intellij-idea-config && rm -rf ~/.config/JetBrains/IntelliJIdea2022.2 && mkdir -p ~/.config/JetBrains && ln -s `pwd`/intellij-idea-config/IntelliJIdea2022.2-config ~/.config/JetBrains/IntelliJIdea2022.2 && rm -rf ~/.local/share/JetBrains/IntelliJIdea2022.2 && mkdir -p ~/.local/share/JetBrains && ln -s `pwd`/intellij-idea-config/IntelliJIdea2022.2-local ~/.local/share/JetBrains/IntelliJIdea2022.2 && rm -rf ~/.local/share/JetBrains/consentOptions && ln -s `pwd`/intellij-idea-config/consentOptions ~/.local/share/JetBrains/consentOptions && rm -rf ~/.local/share/JetBrains/bl && ln -s `pwd`/intellij-idea-config/bl ~/.local/share/JetBrains/bl && rm -rf ~/.local/share/JetBrains/crl && ln -s `pwd`/intellij-idea-config/crl ~/.local/share/JetBrains/crl && cd /usr/local/idea-IU-222.4167.29/bin/ && ./idea.sh
+# - name: Run IntelliJ IDEA
+#   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio-gh-chrome-intellij-idea.git" intellij-idea-config && rm -rf ~/.config/JetBrains/IntelliJIdea2022.2 && mkdir -p ~/.config/JetBrains && ln -s `pwd`/intellij-idea-config/IntelliJIdea2022.2-config ~/.config/JetBrains/IntelliJIdea2022.2 && rm -rf ~/.local/share/JetBrains/IntelliJIdea2022.2 && mkdir -p ~/.local/share/JetBrains && ln -s `pwd`/intellij-idea-config/IntelliJIdea2022.2-local ~/.local/share/JetBrains/IntelliJIdea2022.2 && rm -rf ~/.local/share/JetBrains/consentOptions && ln -s `pwd`/intellij-idea-config/consentOptions ~/.local/share/JetBrains/consentOptions && rm -rf ~/.local/share/JetBrains/bl && ln -s `pwd`/intellij-idea-config/bl ~/.local/share/JetBrains/bl && rm -rf ~/.local/share/JetBrains/crl && ln -s `pwd`/intellij-idea-config/crl ~/.local/share/JetBrains/crl && cd /usr/local/idea-IU-222.4167.29/bin/ && ./idea.sh
 
-  # - name: Open Google Chrome
-  #   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio-gh-chrome-private.git" chrome-config && export CHROME_CONFIG_HOME=`pwd`/chrome-config && google-chrome
+# - name: Open Google Chrome
+#   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio-gh-chrome-private.git" chrome-config && export CHROME_CONFIG_HOME=`pwd`/chrome-config && google-chrome
 
-  # - name: Open Eclipse
-  #   command: cd /usr/local/eclipse/ && ./eclipse
+# - name: Open Eclipse
+#   command: cd /usr/local/eclipse/ && ./eclipse
 
-  # - name: Open Key Explorer
-  #   command: kse
+# - name: Open Key Explorer
+#   command: kse
 
-  # - name: Open Android Studio Canary
-  #   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio.git" android-studio-config && rm -rf ~/.config/Google && mkdir -p ~/.config/Google && ln -s `pwd`/android-studio-config/AndroidStudioPreview2022.1-config ~/.config/Google/AndroidStudioPreview2022.1 && rm -rf ~/.local/share/Google && mkdir -p ~/.local/share/Google && ln -s `pwd`/android-studio-config/AndroidStudioPreview2022.1-local ~/.local/share/Google/AndroidStudioPreview2022.1 && rm -rf ~/.local/share/Google/consentOptions && ln -s `pwd`/android-studio-config/consentOptions ~/.local/share/Google/consentOptions && cd /usr/local/android-studio-canary/bin/ && ./studio.sh
+# - name: Open Android Studio Canary
+#   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio.git" android-studio-config && rm -rf ~/.config/Google && mkdir -p ~/.config/Google && ln -s `pwd`/android-studio-config/AndroidStudioPreview2022.1-config ~/.config/Google/AndroidStudioPreview2022.1 && rm -rf ~/.local/share/Google && mkdir -p ~/.local/share/Google && ln -s `pwd`/android-studio-config/AndroidStudioPreview2022.1-local ~/.local/share/Google/AndroidStudioPreview2022.1 && rm -rf ~/.local/share/Google/consentOptions && ln -s `pwd`/android-studio-config/consentOptions ~/.local/share/Google/consentOptions && cd /usr/local/android-studio-canary/bin/ && ./studio.sh
 
-  # - name: Open Android Studio Beta
-  #   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio.git" android-studio-config && rm -rf ~/.config/Google && mkdir -p ~/.config/Google && ln -s `pwd`/android-studio-config/AndroidStudio2021.3-config ~/.config/Google/AndroidStudio2021.3 && rm -rf ~/.local/share/Google && mkdir -p ~/.local/share/Google && ln -s `pwd`/android-studio-config/AndroidStudio2021.3-local ~/.local/share/Google/AndroidStudio2021.3 && cd /usr/local/android-studio-beta/bin/ && ./studio.sh
+# - name: Open Android Studio Beta
+#   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio.git" android-studio-config && rm -rf ~/.config/Google && mkdir -p ~/.config/Google && ln -s `pwd`/android-studio-config/AndroidStudio2021.3-config ~/.config/Google/AndroidStudio2021.3 && rm -rf ~/.local/share/Google && mkdir -p ~/.local/share/Google && ln -s `pwd`/android-studio-config/AndroidStudio2021.3-local ~/.local/share/Google/AndroidStudio2021.3 && cd /usr/local/android-studio-beta/bin/ && ./studio.sh
 
-  # - name: Get Gist
-  #   command: getgist <username> <filename>
+# - name: Get Gist
+#   command: getgist <username> <filename>
 
-  # - name: List Gists
-  #   command: lsgists <username>
+# - name: List Gists
+#   command: lsgists <username>
 
-  # - name: Check Poetry
-  #   command: poetry --version
+# - name: Check Poetry
+#   command: poetry --version
 
-  # - name: Check tree
-  #   command: tree --version
+# - name: Check tree
+#   command: tree --version
 
-  # - name: Check VS Code
-  #   command: code --version
+# - name: Check VS Code
+#   command: code --version
 
-  # - name: Check VS Code Insiders
-  #   command: code-insiders --version
+# - name: Check VS Code Insiders
+#   command: code-insiders --version
 
-  # - name: Setupe Edge
-  #   command: cd /workspace && rm -rf /workspace/microsoft-edge-config-private && git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL) && cd /workspace && rm -rf ~/.config/microsoft-edge-dev && ln -s `pwd`/microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
+# - name: Setupe Edge
+#   command: cd /workspace && rm -rf /workspace/microsoft-edge-config-private && git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL) && cd /workspace && rm -rf ~/.config/microsoft-edge-dev && ln -s `pwd`/microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
 
-  # - name: Run Squid Proxy Server
-  #   command: sudo service squid restart && sudo service squid status
+# - name: Run Squid Proxy Server
+#   command: sudo service squid restart && sudo service squid status
 
 github:
   prebuilds:
@@ -111,8 +111,3 @@ jetbrains:
   phpstorm:
     prebuilds:
       version: both
-
-vscode:
-  extensions:
-    - GitHub.vscode-pull-request-github
-    - redhat.vscode-yaml
