@@ -175,3 +175,5 @@ ENV PATH=$HOME/fvm/default/bin:$PATH
 
 COPY tigerVncGeometry.txt $HOME
 RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
+
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update"
