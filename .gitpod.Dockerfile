@@ -50,7 +50,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
  && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null
 
-ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
+ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
 RUN wget ${chromeDriverDownloadUrl} \
  && chromeDriverArchieve=$(basename ${chromeDriverDownloadUrl}) \
  && unzip $chromeDriverArchieve \
