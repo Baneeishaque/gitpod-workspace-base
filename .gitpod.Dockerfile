@@ -7,6 +7,8 @@ RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
  && rm $intellijIdeaInstallationFile
 
+# sudo apt-get update && sudo apt-get install --no-install-recommends -y gnupg2 curl git ca-certificates apt-transport-https openssh-client &&   curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - &&   curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list | sudo tee /etc/apt/sources.list.d/dart_stable.list &&   curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_testing.list | sudo tee /etc/apt/sources.list.d/dart_testing.list &&   curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list | sudo tee /etc/apt/sources.list.d/dart_unstable.list && sudo apt-get update
+
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 ARG dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
 ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
@@ -31,9 +33,14 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
+ && curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+ && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list | sudo tee /etc/apt/sources.list.d/dart_stable.list > /dev/null \
+ && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_testing.list | sudo tee /etc/apt/sources.list.d/dart_testing.list > /dev/null \
+ && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list | sudo tee /etc/apt/sources.list.d/dart_unstable.list > /dev/null \
  && sudo apt update \
  && sudo apt install -y \
      libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid \
+ && apt -t unstable install -y dart \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
  && rm $visualStudioCodeInstallationFile \
