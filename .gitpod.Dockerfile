@@ -53,8 +53,9 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo unzip $phpMyAdminArchieveFile -d /opt/ \
  && rm $phpMyAdminArchieveFile \
  && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
- && sudo cp /opt/$phpMyAdminFolder/config.sample.inc.php /opt/$phpMyAdminFolder/config.inc.php \
- && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/$phpMyAdminFolder/config.inc.php >/dev/null \
+ && sudo mv /opt/$phpMyAdminFolder /opt/phpMyAdmin-english \
+ && sudo cp /opt/phpMyAdmin-english/config.sample.inc.php /opt/phpMyAdmin-english/config.inc.php \
+ && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/phpMyAdmin-english/config.inc.php >/dev/null \
  && dart pub global activate very_good_cli
 
 ENV PATH=$HOME/.pub-cache/bin:$PATH
