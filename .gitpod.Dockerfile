@@ -83,11 +83,13 @@ RUN cd $HOME \
 
 ENV JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 
-# ARG androidPlatformVersion="android-33"
-# ARG androidBuildToolsVersion="33.0.0"
-# ARG androidSourcesPlatformVersion="android-33-ext3"
+ARG androidPlatformVersion="android-33"
+ARG androidBuildToolsVersion="33.0.0"
+ARG androidSourcesPlatformVersion="android-33-ext3"
 # ARG cmakeVersion="3.22.1"
 # ARG ndkVersion="25.1.8937393"
+RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
+ && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}"
 # RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
 #  && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
 
