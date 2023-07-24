@@ -181,7 +181,11 @@ RUN sudo systemctl enable squid \
  && sudo service squid restart
 
 RUN brew tap leoafarias/fvm \
- && brew install fvm
+ && brew install fvm \
+#  && fvm install stable \
+#  && fvm install beta \
+ && fvm install master \
+ && fvm global master
 
 ENV PATH=$HOME/fvm/default/bin:$PATH
 

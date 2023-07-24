@@ -35,6 +35,17 @@ tasks:
         && git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL) \
         && rm -rf ~/.config/microsoft-edge-dev \
         && ln -s `pwd`/microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev \
+        && cd /workspace \
+        && flutter create my_app \
+        && cd my_app \
+        && flutter build aar \
+        && flutter build apk \
+        && flutter build appbundle \
+        && flutter build bundle \
+        && flutter build linux \
+        && flutter build web \
+        && cd .. \
+        && rm -rf my_app \
         && exit
 
 # - name: Setup JADX & dex2jar
