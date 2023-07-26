@@ -2,10 +2,10 @@ FROM gitpod/workspace-full-vnc
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
- && wget --output-document=$intellijIdeaInstallationFile "https://download.jetbrains.com/product?code=IIU&latest&distribution=linux" \
- && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
- && rm $intellijIdeaInstallationFile
+# RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
+#  && wget --output-document=$intellijIdeaInstallationFile "https://download.jetbrains.com/product?code=IIU&latest&distribution=linux" \
+#  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
+#  && rm $intellijIdeaInstallationFile
 
 ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 ARG dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
@@ -16,8 +16,8 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
  && wget ${keyExplorerDownloadUrl} \
  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
- && visualStudioCodeInstallationFile=visualStudioCode.deb \
- && wget --output-document=$visualStudioCodeInstallationFile "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" \
+# && visualStudioCodeInstallationFile=visualStudioCode.deb \
+# && wget --output-document=$visualStudioCodeInstallationFile "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" \
  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
  && brew install pup \
@@ -37,7 +37,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list | sudo tee /etc/apt/sources.list.d/dart_unstable.list > /dev/null \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInstallationFile ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid \
  && sudo apt -t unstable install -y dart \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
