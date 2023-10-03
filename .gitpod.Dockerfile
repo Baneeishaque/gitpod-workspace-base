@@ -41,7 +41,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo apt -t unstable install -y dart \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
- && rm $visualStudioCodeInstallationFile \
+# && rm $visualStudioCodeInstallationFile \
  && rm $visualStudioCodeInsidersInstallationFile \
  && rm $dBeaverInstallationFile \
  && rm $gitKrakenInstallationFile \
