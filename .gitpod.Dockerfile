@@ -35,9 +35,11 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list | sudo tee /etc/apt/sources.list.d/dart_stable.list > /dev/null \
  && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_testing.list | sudo tee /etc/apt/sources.list.d/dart_testing.list > /dev/null \
  && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list | sudo tee /etc/apt/sources.list.d/dart_unstable.list > /dev/null \
+ && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
+ && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid \
+     libxtst6 aria2 gh ./$keyExplorerInstallationFile tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile ./$peaZipInstallationFile p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid postgresql-16 \
  && sudo apt -t unstable install -y dart \
  && sudo rm -rf /var/lib/apt/lists/* \
  && rm $keyExplorerInstallationFile \
@@ -192,3 +194,14 @@ COPY tigerVncGeometry.txt $HOME
 RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
 
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update"
+
+# Setup PostgreSQL server for user gitpod
+ENV PATH=$PATH:/usr/lib/postgresql/16/bin
+ENV PGDATA=/home/gitpod/.pg_ctl/data
+RUN mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/data ~/.pg_ctl/sockets \
+ && initdb -D ~/.pg_ctl/data/ \
+ && printf "#!/bin/bash\npg_ctl -D ~/.pg_ctl/data/ -l ~/.pg_ctl/log -o \"-k ~/.pg_ctl/sockets\" start\n" > ~/.pg_ctl/bin/pg_start \
+ && printf "#!/bin/bash\npg_ctl -D ~/.pg_ctl/data/ -l ~/.pg_ctl/log -o \"-k ~/.pg_ctl/sockets\" stop\n" > ~/.pg_ctl/bin/pg_stop \
+ && chmod +x ~/.pg_ctl/bin/*
+ENV PATH=$PATH:$HOME/.pg_ctl/bin
+ENV DATABASE_URL="postgresql://gitpod@localhost"
