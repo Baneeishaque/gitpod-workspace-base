@@ -76,7 +76,7 @@ RUN wget ${chromeDriverDownloadUrl} \
 RUN curl https://rclone.org/install.sh | sudo bash
 
 ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
-RUN cd $HOME \
+RUN cd /workspace \
  && wget ${androidCommandLineToolsLinuxDownloadUrl} \
  && androidCommandLineToolsArchieve=$(basename ${androidCommandLineToolsLinuxDownloadUrl}) \
  && unzip $androidCommandLineToolsArchieve \
@@ -92,12 +92,12 @@ ARG androidBuildToolsVersion="33.0.0"
 ARG androidSourcesPlatformVersion="android-33-ext3"
 # ARG cmakeVersion="3.22.1"
 # ARG ndkVersion="25.1.8937393"
-RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
- && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}"
+RUN yes | /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
+ && /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}"
 # RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
 #  && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
 
-ENV ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+ENV ANDROID_SDK_ROOT="/workspace/Android/Sdk"
 
 ENV PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
@@ -184,7 +184,10 @@ RUN sudo systemctl enable squid \
  && sudo sed -i 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf \
  && sudo service squid restart
 
-RUN brew tap leoafarias/fvm \
+ENV FVM_HOME=/workspace/fvm
+
+RUN mkdir /workspace/fvm \
+ && brew tap leoafarias/fvm \
  && brew install fvm \
 #  && fvm install stable \
 #  && fvm install beta \
@@ -208,3 +211,9 @@ RUN mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/data ~/.pg_ctl/sockets \
  && chmod +x ~/.pg_ctl/bin/*
 ENV PATH=$PATH:$HOME/.pg_ctl/bin
 ENV DATABASE_URL="postgresql://gitpod@localhost"
+
+RUN mkdir /workspace/vscode-insider-user-data \
+ && ln -s /workspace/vscode-insider-user-data "$HOME/.config/Code - Insiders" \
+ && mkdir ~/.vscode-insiders \
+ && mkdir /workspace/vscode-insider-extensions \
+ && ln -s /workspace/vscode-insider-extensions ~/.vscode-insiders/extensions
