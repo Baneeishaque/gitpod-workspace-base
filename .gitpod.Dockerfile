@@ -72,7 +72,8 @@ RUN wget ${chromeDriverDownloadUrl} \
  && sudo mv $chromeDriverExecutable /usr/bin/ \
  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
 
-RUN curl https://rclone.org/install.sh | sudo bash -s beta
+# RUN curl https://rclone.org/install.sh | sudo bash -s beta
+RUN curl https://rclone.org/install.sh | sudo bash
 
 ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
 RUN cd $HOME \
