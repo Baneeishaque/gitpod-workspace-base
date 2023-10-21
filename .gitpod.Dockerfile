@@ -100,9 +100,9 @@ ENV JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 # # RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
 # #  && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
 
-ENV ANDROID_SDK_ROOT="/workspace/Android/Sdk"
+ENV ANDROID_HOME="/workspace/Android/Sdk"
 
-ENV PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
+ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 
 # ARG eclipseDownloadUrl="https://ftp.yz.yamagata-u.ac.jp/pub/eclipse/technology/epp/downloads/release/2022-09/R/eclipse-java-2022-09-R-linux-gtk-x86_64.tar.gz"
 # RUN wget ${eclipseDownloadUrl} \
