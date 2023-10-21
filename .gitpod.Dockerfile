@@ -194,7 +194,7 @@ RUN mkdir /workspace/fvm \
  && fvm install master \
  && fvm global master
 
-ENV PATH=$HOME/fvm/default/bin:$PATH
+ENV PATH=$FVM_HOME/default/bin:$PATH
 
 COPY tigerVncGeometry.txt $HOME
 RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
