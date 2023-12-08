@@ -196,7 +196,7 @@ ENV PATH=$FVM_HOME/default/bin:$PATH
 COPY tigerVncGeometry.txt $HOME
 RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
 
-RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update"
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update && sdk upgrade"
 
 # Setup PostgreSQL server for user gitpod
 ENV PATH=$PATH:/usr/lib/postgresql/16/bin
