@@ -57,9 +57,11 @@ if [ -d fvm/versions/master ];then
     cd /workspace
 fi
 
-# fvm install stable &&
-# fvm install beta &&
-fvm install master &&
+. /home/gitpod/.sdkman/bin/sdkman-init.sh &&
+    sdk use java 17.0.9.fx-zulu &&
+    # fvm install stable &&
+    # fvm install beta &&
+    fvm install master &&
     fvm global master &&
     flutter create my_app &&
     cd my_app &&
