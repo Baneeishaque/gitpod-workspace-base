@@ -1,4 +1,4 @@
-eval $(gp env -e)
+eval $(gp env -e) &&
 
 if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ];then
     bashHubConfigurationFolder=$HOME/.bashhub &&
@@ -10,34 +10,34 @@ if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ];then
         sed -z 's+\n        if ! ../env/bin/bashhub util update_system_info; then\n            # Run setup if we run into any issues updating our system info\n            ../env/bin/bashhub setup\n        fi++' -i setup &&
         bash setup &&
         rm setup
-fi
+fi &&
 
 if [ -v GH_TOKEN ];then
     echo "export GH_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc
-fi
+fi &&
 
 if [ -v GH_TOKEN ] && [ -v GETGIST_USER ];then
     echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc &&
         echo "export GETGIST_USER=$(echo $GETGIST_USER)" >>~/.bashrc
-fi
+fi &&
 
 if [ -v DOCKER_HUB_USERNAME ] && [ -v DOCKER_HUB_PASSWORD ];then
     echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >>~/.bashrc &&
         echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
         docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD)
-fi
+fi &&
 
 if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ];then
     if [ -d microsoft-edge-config-private ];then
-        cd microsoft-edge-config-private
-        git pull
+        cd microsoft-edge-config-private &&
+        git pull &&
         cd ..
     else
         git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL)
     fi &&
         rm -rf ~/.config/microsoft-edge-dev &&
         ln -s microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
-fi
+fi &&
 
 if [ ! -d Android/Sdk ];then
     androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/$(wget -O - "https://developer.android.com/studio#command-tools" | pup '[data-modal-dialog-id="sdk_linux_download"] text{}')" &&
@@ -49,13 +49,13 @@ if [ ! -d Android/Sdk ];then
     rmdir cmdline-tools/ &&
     rm $androidCommandLineToolsArchieve &&
     yes | /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-fi
+fi &&
 
 if [ -d fvm/versions/master ];then
-    cd fvm/versions/master
-    git pull
+    cd fvm/versions/master &&
+    git pull &&
     cd /workspace
-fi
+fi &&
 
 . /home/gitpod/.sdkman/bin/sdkman-init.sh &&
     sdk use java 17.0.9.fx-zulu &&
@@ -76,25 +76,26 @@ fi
     cd my_module &&
     flutter build aar &&
     cd .. &&
-    rm -rf my_module
+    rm -rf my_module &&
 
 if [ ! -d vscode-insider-user-data ];then
     mkdir vscode-insider-user-data
-fi
-ln -s vscode-insider-user-data "$HOME/.config/Code - Insiders"
-mkdir ~/.vscode-insiders
+fi &&
+ln -s vscode-insider-user-data "$HOME/.config/Code - Insiders" &&
+mkdir ~/.vscode-insiders &&
 if [ ! -d vscode-insider-extensions ];then
     mkdir vscode-insider-extensions
-fi
-ln -s vscode-insider-extensions ~/.vscode-insiders/extensions
+fi &&
+ln -s vscode-insider-extensions ~/.vscode-insiders/extensions &&
 
 if [ -d configurations-private ];then
-    cd configurations-private
-    git pull
+    cd configurations-private &&
+    git pull &&
     cd ..
 else
     if [ -v CONFIGURATION_REPOSITORY_URL ];then
         git clone $(echo $CONFIGURATION_REPOSITORY_URL)
     fi
 fi && 
-    exit
+
+exit
