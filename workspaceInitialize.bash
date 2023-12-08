@@ -27,6 +27,7 @@ bashHubConfigurationFolder=$HOME/.bashhub &&
     mv cmdline-tools/* Android/Sdk/cmdline-tools/latest/ &&
     rmdir cmdline-tools/ &&
     rm $androidCommandLineToolsArchieve &&
+    export ANDROID_HOME="/workspace/Android/Sdk" &&
     # fvm install stable &&
     # fvm install beta &&
     fvm install master &&
