@@ -98,4 +98,4 @@ else
     fi
 fi && 
 
-exit
+source ~/.bashrc
