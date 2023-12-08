@@ -50,7 +50,13 @@ if [ ! -d Android/Sdk ];then
     rm $androidCommandLineToolsArchieve &&
     yes | /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
 fi
-    
+
+if [ -d fvm/versions/master ];then
+    cd fvm/versions/master
+    git pull
+    cd /workspace
+fi
+
 # fvm install stable &&
 # fvm install beta &&
 fvm install master &&
