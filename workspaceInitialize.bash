@@ -87,4 +87,4 @@ else
         git clone $(echo $CONFIGURATION_REPOSITORY_URL)
     fi
 fi &&
-exit
+source ~/.bashrc
