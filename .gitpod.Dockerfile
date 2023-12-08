@@ -76,7 +76,8 @@ ENV PATH=$HOME/.pub-cache/bin:$PATH
 #  && sudo mv $chromeDriverExecutable /usr/bin/ \
 #  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
 
-RUN curl https://rclone.org/install.sh | sudo bash -s beta
+# RUN curl https://rclone.org/install.sh | sudo bash -s beta
+RUN curl https://rclone.org/install.sh | sudo bash
 
 # ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
 # RUN cd /workspace \
@@ -87,8 +88,6 @@ RUN curl https://rclone.org/install.sh | sudo bash -s beta
 #  && mv cmdline-tools/* Android/Sdk/cmdline-tools/latest/ \
 #  && rmdir cmdline-tools/ \
 #  && rm $androidCommandLineToolsArchieve
-
-ENV JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 
 # ARG androidPlatformVersion="android-33"
 # ARG androidBuildToolsVersion="33.0.0"

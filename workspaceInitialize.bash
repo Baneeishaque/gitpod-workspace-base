@@ -1,33 +1,43 @@
 eval $(gp env -e)
 
-bashHubConfigurationFolder=$HOME/.bashhub &&
-    mkdir $bashHubConfigurationFolder &&
-    bashHubConfigurationPath=$bashHubConfigurationFolder/config &&
-    printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" >$bashHubConfigurationPath &&
-    cd /workspace &&
-    curl -OL https://bashhub.com/setup &&
-    sed -z 's+\n        if ! ../env/bin/bashhub util update_system_info; then\n            # Run setup if we run into any issues updating our system info\n            ../env/bin/bashhub setup\n        fi++' -i setup &&
-    bash setup &&
-    rm setup
+if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ];then
+    bashHubConfigurationFolder=$HOME/.bashhub &&
+        mkdir $bashHubConfigurationFolder &&
+        bashHubConfigurationPath=$bashHubConfigurationFolder/config &&
+        printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" >$bashHubConfigurationPath &&
+        cd /workspace &&
+        curl -OL https://bashhub.com/setup &&
+        sed -z 's+\n        if ! ../env/bin/bashhub util update_system_info; then\n            # Run setup if we run into any issues updating our system info\n            ../env/bin/bashhub setup\n        fi++' -i setup &&
+        bash setup &&
+        rm setup
+fi
 
-echo "export GH_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc
+if [ -v GH_TOKEN ];then
+    echo "export GH_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc
+fi
 
-echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc &&
-    echo "export GETGIST_USER=$(echo $GETGIST_USER)" >>~/.bashrc
+if [ -v GH_TOKEN ] && [ -v GETGIST_USER ];then
+    echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc &&
+        echo "export GETGIST_USER=$(echo $GETGIST_USER)" >>~/.bashrc
+fi
 
-echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >>~/.bashrc &&
-    echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
-    docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD)
+if [ -v DOCKER_HUB_USERNAME ] && [ -v DOCKER_HUB_PASSWORD ];then
+    echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >>~/.bashrc &&
+        echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
+        docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD)
+fi
 
-if [ -d microsoft-edge-config-private ];then
-    cd microsoft-edge-config-private
-    git pull
-    cd ..
-else
-    git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL)
-fi &&
-    rm -rf ~/.config/microsoft-edge-dev &&
-    ln -s microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
+if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ];then
+    if [ -d microsoft-edge-config-private ];then
+        cd microsoft-edge-config-private
+        git pull
+        cd ..
+    else
+        git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL)
+    fi &&
+        rm -rf ~/.config/microsoft-edge-dev &&
+        ln -s microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
+fi
 
 if [ ! -d Android/Sdk ];then
     androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/$(wget -O - "https://developer.android.com/studio#command-tools" | pup '[data-modal-dialog-id="sdk_linux_download"] text{}')" &&
@@ -60,11 +70,15 @@ fvm install master &&
     cd .. &&
     rm -rf my_module
 
-mkdir /workspace/vscode-insider-user-data &&
-    ln -s /workspace/vscode-insider-user-data "$HOME/.config/Code - Insiders" &&
-    mkdir ~/.vscode-insiders &&
-    mkdir /workspace/vscode-insider-extensions &&
-    ln -s /workspace/vscode-insider-extensions ~/.vscode-insiders/extensions
+if [ ! -d vscode-insider-user-data ];then
+    mkdir vscode-insider-user-data
+fi
+ln -s vscode-insider-user-data "$HOME/.config/Code - Insiders"
+mkdir ~/.vscode-insiders
+if [ ! -d vscode-insider-extensions ];then
+    mkdir vscode-insider-extensions
+fi
+ln -s vscode-insider-extensions ~/.vscode-insiders/extensions
 
 if [ -v CONFIGURATION_REPOSITORY_URL ];then
     git clone $(echo $CONFIGURATION_REPOSITORY_URL)
