@@ -55,6 +55,7 @@ fi &&
     # fvm install beta &&
     fvm install master &&
     fvm global master &&
+    very_good --version &&
     flutter create my_app &&
     cd my_app &&
     flutter build bundle &&

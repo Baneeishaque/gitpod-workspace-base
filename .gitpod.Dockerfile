@@ -34,9 +34,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
  && curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
- && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list | sudo tee /etc/apt/sources.list.d/dart_stable.list > /dev/null \
- && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_testing.list | sudo tee /etc/apt/sources.list.d/dart_testing.list > /dev/null \
- && curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list | sudo tee /etc/apt/sources.list.d/dart_unstable.list > /dev/null \
  && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
  && sudo apt update \
@@ -46,7 +43,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
      tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile \
     #  ./$peaZipInstallationFile \
      p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid postgresql-16 dotnet-sdk-7.0 \
- && sudo apt -t unstable install -y dart \
  && sudo rm -rf /var/lib/apt/lists/* \
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
@@ -62,8 +58,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
  && sudo mv /opt/$phpMyAdminFolder /opt/phpMyAdmin-english \
  && sudo cp /opt/phpMyAdmin-english/config.sample.inc.php /opt/phpMyAdmin-english/config.inc.php \
- && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/phpMyAdmin-english/config.inc.php >/dev/null \
- && dart pub global activate very_good_cli
+ && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/phpMyAdmin-english/config.inc.php >/dev/null
 
 ENV PATH=$HOME/.pub-cache/bin:$PATH
 
@@ -186,12 +181,16 @@ RUN sudo systemctl enable squid \
  && sudo sed -i 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf \
  && sudo service squid restart
 
-ENV FVM_HOME=/workspace/fvm
+ENV FVM_CACHE_PATH=/workspace/fvm
 
 RUN brew tap leoafarias/fvm \
- && brew install fvm
+ && brew install leoafarias/fvm/fvm@3.0.0-beta.5 \
+ && dart pub global activate very_good_cli \
+ && brew uninstall dart \
+ && brew autoremove \
+ && brew cleanup
 
-ENV PATH=$FVM_HOME/default/bin:$PATH
+ENV PATH=$FVM_CACHE_PATH/default/bin:$HOME/.pub-cache/bin:$PATH
 
 COPY tigerVncGeometry.txt $HOME
 RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
