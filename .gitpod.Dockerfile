@@ -60,8 +60,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo cp /opt/phpMyAdmin-english/config.sample.inc.php /opt/phpMyAdmin-english/config.inc.php \
  && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/phpMyAdmin-english/config.inc.php >/dev/null
 
-ENV PATH=$HOME/.pub-cache/bin:$PATH
-
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
 # RUN wget ${chromeDriverDownloadUrl} \
 #  && chromeDriverArchieve=$(basename ${chromeDriverDownloadUrl}) \
@@ -71,8 +69,7 @@ ENV PATH=$HOME/.pub-cache/bin:$PATH
 #  && sudo mv $chromeDriverExecutable /usr/bin/ \
 #  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
 
-# RUN curl https://rclone.org/install.sh | sudo bash -s beta
-RUN curl https://rclone.org/install.sh | sudo bash
+RUN curl https://rclone.org/install.sh | sudo bash -s beta
 
 # ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
 # RUN cd /workspace \
@@ -207,9 +204,3 @@ RUN mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/data ~/.pg_ctl/sockets \
  && chmod +x ~/.pg_ctl/bin/*
 ENV PATH=$PATH:$HOME/.pg_ctl/bin
 ENV DATABASE_URL="postgresql://gitpod@localhost"
-
-# RUN mkdir /workspace/vscode-insider-user-data \
-#  && ln -s /workspace/vscode-insider-user-data "$HOME/.config/Code - Insiders" \
-#  && mkdir ~/.vscode-insiders \
-#  && mkdir /workspace/vscode-insider-extensions \
-#  && ln -s /workspace/vscode-insider-extensions ~/.vscode-insiders/extensions
