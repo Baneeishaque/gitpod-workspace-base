@@ -32,15 +32,13 @@ if [ ! -d vscode-insider-extensions ];then
     mkdir vscode-insider-extensions
 fi &&
 ln -s vscode-insider-extensions ~/.vscode-insiders/extensions &&
-if [ -d Periodic-Mouse-Click-Chrome-Selenium-Python ];then
-    cd Periodic-Mouse-Click-Chrome-Selenium-Python &&
-    git pull &&
-    cd ..
-else
-    if [ -v CONFIGURATION_REPOSITORY_URL ];then
-        git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
-    fi
+if [ ! -d Periodic-Mouse-Click-Chrome-Selenium-Python ];then
+    git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
 fi &&
+cd Periodic-Mouse-Click-Chrome-Selenium-Python &&
+    git pull &&
+    pip install -r requirements.txt &&
+    cd .. &&
 if [ -d configurations-private ];then
     cd configurations-private &&
     git pull &&
