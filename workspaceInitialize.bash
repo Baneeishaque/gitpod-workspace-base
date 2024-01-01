@@ -12,7 +12,6 @@ eval $(gp env -e) &&
     fi &&
     if [ -v GH_TOKEN ]; then
         echo "export GH_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc
-        echo "GH_TOKEN = $GH_TOKEN"
     fi &&
     if [ -v GH_TOKEN ] && [ -v GETGIST_USER ]; then
         echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc &&
