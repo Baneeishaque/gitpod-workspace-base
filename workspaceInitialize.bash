@@ -22,6 +22,24 @@ if [ -v DOCKER_HUB_USERNAME ] && [ -v DOCKER_HUB_PASSWORD ];then
         echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
         docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD)
 fi &&
+if [ ! -d vscode-insider-user-data ];then
+    mkdir vscode-insider-user-data
+fi &&
+ln -s vscode-insider-user-data "$HOME/.config/Code - Insiders" &&
+mkdir ~/.vscode-insiders &&
+if [ ! -d vscode-insider-extensions ];then
+    mkdir vscode-insider-extensions
+fi &&
+ln -s vscode-insider-extensions ~/.vscode-insiders/extensions &&
+if [ -d configurations-private ];then
+    cd configurations-private &&
+    git pull &&
+    cd ..
+else
+    if [ -v CONFIGURATION_REPOSITORY_URL ];then
+        git clone $(echo $CONFIGURATION_REPOSITORY_URL)
+    fi
+fi &&
 if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ];then
     if [ -d microsoft-edge-config-private ];then
         cd microsoft-edge-config-private &&
@@ -71,22 +89,4 @@ fi &&
     flutter build aar &&
     cd .. &&
     rm -rf my_module &&
-if [ ! -d vscode-insider-user-data ];then
-    mkdir vscode-insider-user-data
-fi &&
-ln -s vscode-insider-user-data "$HOME/.config/Code - Insiders" &&
-mkdir ~/.vscode-insiders &&
-if [ ! -d vscode-insider-extensions ];then
-    mkdir vscode-insider-extensions
-fi &&
-ln -s vscode-insider-extensions ~/.vscode-insiders/extensions &&
-if [ -d configurations-private ];then
-    cd configurations-private &&
-    git pull &&
-    cd ..
-else
-    if [ -v CONFIGURATION_REPOSITORY_URL ];then
-        git clone $(echo $CONFIGURATION_REPOSITORY_URL)
-    fi
-fi &&
 source ~/.bashrc
