@@ -1,7 +1,9 @@
 eval $(gp env -e) &&
     if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ]; then
         bashHubConfigurationFolder=$HOME/.bashhub &&
-            mkdir $bashHubConfigurationFolder &&
+            if [ ! -d $bashHubConfigurationFolder ]; then
+                mkdir $bashHubConfigurationFolder
+            fi &&
             bashHubConfigurationPath=$bashHubConfigurationFolder/config &&
             printf "[bashhub]\naccess_token = $(echo $BASH_HUB_ACCESS_TOKEN)\nsystem_name = $(echo $BASH_HUB_SYSTEM_NAME)" >$bashHubConfigurationPath &&
             cd /workspace &&
@@ -25,12 +27,21 @@ eval $(gp env -e) &&
     if [ ! -d vscode-insider-user-data ]; then
         mkdir vscode-insider-user-data
     fi &&
-    ln -s vscode-insider-user-data "$HOME/.config/Code - Insiders" &&
-    mkdir ~/.vscode-insiders &&
+    vscodeInsiderUserData="$HOME/.config/Code - Insiders" &&
+    if [ ! -h "$vscodeInsiderUserData" ]; then
+        ln -s vscode-insider-user-data "$vscodeInsiderUserData"
+    fi &&
+    vscodeUserFolder=~/.vscode-insiders &&
+    if [ ! -d $vscodeUserFolder ]; then
+        mkdir $vscodeUserFolder
+    fi &&
     if [ ! -d vscode-insider-extensions ]; then
         mkdir vscode-insider-extensions
     fi &&
-    ln -s vscode-insider-extensions ~/.vscode-insiders/extensions &&
+    vscodeUserExtensionsFolder=$vscodeUserFolder/extensions &&
+    if [ ! -h $vscodeUserExtensionsFolder ]; then
+        ln -s vscode-insider-extensions $vscodeUserExtensionsFolder
+    fi &&
     if [ ! -d Periodic-Mouse-Click-Chrome-Selenium-Python ]; then
         git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
     fi &&
