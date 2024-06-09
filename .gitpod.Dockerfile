@@ -42,7 +42,9 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
     #  ./$keyExplorerInstallationFile \
      tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile \
     #  ./$peaZipInstallationFile \
-     p7zip-full software-properties-common apt-transport-https wget microsoft-edge-dev squid postgresql-16 dotnet-sdk-7.0 \
+     p7zip-full software-properties-common apt-transport-https wget \
+    #  microsoft-edge-dev \
+     squid postgresql-16 dotnet-sdk-7.0 \
  && sudo rm -rf /var/lib/apt/lists/* \
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
