@@ -86,7 +86,7 @@ eval $(gp env -e) &&
             cd /workspace
     fi &&
     . /home/gitpod/.sdkman/bin/sdkman-init.sh &&
-    sdk use java $(sdk list java | grep "installed" | grep "17" | awk '{print $NF}') &&
+    sdk use java $(sdk list java | grep "local only" | grep "21" | awk '{print $NF}') &&
     # fvm install stable &&
     # fvm install beta &&
     fvm install master &&
