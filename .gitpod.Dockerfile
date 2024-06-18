@@ -211,5 +211,6 @@ ENV DATABASE_URL="postgresql://gitpod@localhost"
 ENV PATH=$PATH:$HOME/.dotnet/tools
 RUN git config --global credential.credentialStore cache \
  && git config --global credential.cacheOptions "--timeout 1576800000" \
- && dotnet tool install -g git-credential-manager \
- && git-credential-manager configure
+ && dotnet tool install -g git-credential-manager
+#  && dotnet tool install -g git-credential-manager \
+#  && git-credential-manager configure
