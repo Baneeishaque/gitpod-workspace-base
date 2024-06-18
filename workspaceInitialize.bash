@@ -91,21 +91,21 @@ eval $(gp env -e) &&
     # fvm install stable &&
     # fvm install beta &&
     fvm install master &&
-    fvm global master &&
+    # fvm global master &&
     # very_good --version &&
     # very_good update &&
-    flutter create my_app &&
+    fvm spawn master create my_app &&
     cd my_app &&
-    flutter build bundle &&
-    flutter build apk &&
-    flutter build appbundle &&
-    flutter build linux &&
-    flutter build web &&
+    fvm spawn master build bundle &&
+    fvm spawn master build apk &&
+    fvm spawn master build appbundle &&
+    fvm spawn master build linux &&
+    fvm spawn master build web &&
     cd .. &&
     rm -rf my_app &&
-    flutter create my_module --template=module &&
+    fvm spawn master create my_module --template=module &&
     cd my_module &&
-    flutter build aar &&
+    fvm spawn master build aar &&
     cd .. &&
     rm -rf my_module &&
     source ~/.bashrc
