@@ -183,7 +183,7 @@ RUN sudo systemctl enable squid \
 ENV FVM_CACHE_PATH=/workspace/fvm
 
 RUN brew tap leoafarias/fvm \
- && brew install leoafarias/fvm/fvm \
+ && brew install leoafarias/fvm/fvm glab \
 #  && brew install dart-sdk \
 #  && dart pub global activate very_good_cli \
 #  && brew uninstall dart-sdk \

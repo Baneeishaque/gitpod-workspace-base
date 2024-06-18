@@ -19,6 +19,9 @@ eval $(gp env -e) &&
         echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc &&
             echo "export GETGIST_USER=$(echo $GETGIST_USER)" >>~/.bashrc
     fi &&
+    if [ -v GITLAB_TOKEN ]; then
+        echo "export GITLAB_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
+    fi &&
     if [ -v DOCKER_HUB_USERNAME ] && [ -v DOCKER_HUB_PASSWORD ]; then
         echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >>~/.bashrc &&
             echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
