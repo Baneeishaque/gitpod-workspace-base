@@ -92,8 +92,8 @@ eval $(gp env -e) &&
     # fvm install beta &&
     fvm install master &&
     fvm global master &&
-    very_good --version &&
-    very_good update &&
+    # very_good --version &&
+    # very_good update &&
     flutter create my_app &&
     cd my_app &&
     flutter build bundle &&

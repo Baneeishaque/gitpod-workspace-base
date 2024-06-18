@@ -184,9 +184,9 @@ ENV FVM_CACHE_PATH=/workspace/fvm
 
 RUN brew tap leoafarias/fvm \
  && brew install leoafarias/fvm/fvm \
- && brew install dart-sdk \
- && dart pub global activate very_good_cli \
- && brew uninstall dart-sdk \
+#  && brew install dart-sdk \
+#  && dart pub global activate very_good_cli \
+#  && brew uninstall dart-sdk \
  && brew autoremove \
  && brew cleanup
 
