@@ -47,6 +47,7 @@ eval $(gp env -e) &&
     fi &&
     cd Periodic-Mouse-Click-Chrome-Selenium-Python &&
     git pull &&
+    pyenv install --skip-existing &&
     pip install -r requirements.txt &&
     cd .. &&
     if [ -d configurations-private ]; then
