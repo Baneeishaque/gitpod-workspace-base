@@ -54,6 +54,8 @@ eval $(gp env -e) &&
             git clone $(echo $CONFIGURATION_REPOSITORY_URL)
         fi
     fi &&
+    pwd &&
+    ls -a &&
     source installPeaZip.bash &&
     source installPowerShellOnUbuntu.bash &&
     if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ]; then
