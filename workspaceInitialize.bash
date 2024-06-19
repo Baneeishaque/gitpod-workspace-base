@@ -45,14 +45,6 @@ eval $(gp env -e) &&
     if [ ! -h $vscodeUserExtensionsFolder ]; then
         ln -s vscode-insider-extensions $vscodeUserExtensionsFolder
     fi &&
-    if [ ! -d Periodic-Mouse-Click-Chrome-Selenium-Python ]; then
-        git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
-    fi &&
-    cd Periodic-Mouse-Click-Chrome-Selenium-Python &&
-    git pull &&
-    pyenv install --skip-existing &&
-    pip install -r requirements.txt &&
-    cd .. &&
     if [ -d configurations-private ]; then
         cd configurations-private &&
             git pull &&
@@ -73,6 +65,14 @@ eval $(gp env -e) &&
             rm -rf ~/.config/microsoft-edge-dev &&
             ln -s microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
     fi &&
+    if [ ! -d Periodic-Mouse-Click-Chrome-Selenium-Python ]; then
+        git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
+    fi &&
+    cd Periodic-Mouse-Click-Chrome-Selenium-Python &&
+    git pull &&
+    pyenv install --skip-existing &&
+    pip install -r requirements.txt &&
+    cd .. &&
     if [ ! -d Android/Sdk ]; then
         androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/$(wget -O - "https://developer.android.com/studio#command-tools" | pup '[data-modal-dialog-id="sdk_linux_download"] text{}')" &&
             wget $androidCommandLineToolsLinuxDownloadUrl &&
