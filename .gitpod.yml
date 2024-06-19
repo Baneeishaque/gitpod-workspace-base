@@ -67,16 +67,6 @@ tasks:
 # - name: Run Squid Proxy Server
 #   command: sudo service squid restart && sudo service squid status
 
-github:
-  prebuilds:
-    master: true
-    branches: true
-    pullRequests: true
-    pullRequestsFromForks: true
-    addCheck: false
-    addComment: false
-    addBadge: true
-
 jetbrains:
   intellij:
     prebuilds:
