@@ -35,13 +35,15 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
  && VERSION_ID=$(sudo grep -oP 'VERSION_ID="\K[^"]+' /etc/os-release) \
  && wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb \
+ && peaZipInstallationFile=PeaZip.deb \
+ && wget --output-document=$peaZipInstallationFile $(curl -s https://api.github.com/repos/peazip/peaZip/releases/latest | sed 's/[()",{}]/ /g; s/ /\n/g' | grep "https.*releases/download.*GTK.*deb") \
  && sudo apt update \
  && sudo apt install -y \
      libxtst6 aria2 gh \
     #  ./$keyExplorerInstallationFile \
      tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget \
     #  microsoft-edge-dev \
-     squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb \
+     squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb ./$peaZipInstallationFile \
  && sudo apt update \
  && sudo apt install -y \
      powershell \
@@ -51,6 +53,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && rm $visualStudioCodeInsidersInstallationFile \
  && rm $dBeaverInstallationFile \
  && rm $gitKrakenInstallationFile \
+ && rm $peaZipInstallationFile \
  && phpMyAdminDownloadUrl=$(wget -O - https://www.phpmyadmin.net/downloads | pup 'a.download_popup attr{href}' | grep --max-count=1 'english.zip') \
  && wget $phpMyAdminDownloadUrl \
  && phpMyAdminArchieveFile=$(basename $phpMyAdminDownloadUrl) \

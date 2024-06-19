@@ -54,13 +54,6 @@ eval $(gp env -e) &&
             git clone $(echo $CONFIGURATION_REPOSITORY_URL)
         fi
     fi &&
-    peaZipInstallationFile=PeaZip.deb &&
-    gh release download --pattern '*GTK*.deb' --repo peazip/PeaZip --output $peaZipInstallationFile &&
-    sudo apt update &&
-    sudo apt install -y \
-        ./$peaZipInstallationFile &&
-    sudo rm -rf /var/lib/apt/lists/* &&
-    rm $peaZipInstallationFile &&
     if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ]; then
         if [ -d microsoft-edge-config-private ]; then
             cd microsoft-edge-config-private &&
