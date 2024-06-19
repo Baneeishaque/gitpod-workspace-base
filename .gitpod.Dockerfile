@@ -12,7 +12,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 # ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 ARG dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
 ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-# ARG peaZipDownloadUrl="https://downloads.sourceforge.net/project/peazip/8.9.0/peazip_8.9.0.LINUX.GTK2-1_amd64.deb"
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
@@ -28,8 +27,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && dBeaverInstallationFile=$(basename $dBeaverDownloadUrl) \
  && wget ${gitKrakenDownloadUrl} \
  && gitKrakenInstallationFile=$(basename ${gitKrakenDownloadUrl}) \
-#  && wget ${peaZipDownloadUrl} \
-#  && peaZipInstallationFile=$(basename ${peaZipDownloadUrl}) \
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
@@ -40,9 +37,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo apt install -y \
      libxtst6 aria2 gh \
     #  ./$keyExplorerInstallationFile \
-     tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile \
-    #  ./$peaZipInstallationFile \
-     p7zip-full software-properties-common apt-transport-https wget \
+     tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget \
     #  microsoft-edge-dev \
      squid postgresql-16 dotnet-sdk-7.0 \
  && sudo rm -rf /var/lib/apt/lists/* \
@@ -51,7 +46,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && rm $visualStudioCodeInsidersInstallationFile \
  && rm $dBeaverInstallationFile \
  && rm $gitKrakenInstallationFile \
-#  && rm $peaZipInstallationFile \
  && phpMyAdminDownloadUrl=$(wget -O - https://www.phpmyadmin.net/downloads | pup 'a.download_popup attr{href}' | grep --max-count=1 'english.zip') \
  && wget $phpMyAdminDownloadUrl \
  && phpMyAdminArchieveFile=$(basename $phpMyAdminDownloadUrl) \
