@@ -67,6 +67,9 @@ tasks:
 # - name: Run Squid Proxy Server
 #   command: sudo service squid restart && sudo service squid status
 
+# - name: Start PowerShell
+#   command: pwsh
+
 jetbrains:
   intellij:
     prebuilds:

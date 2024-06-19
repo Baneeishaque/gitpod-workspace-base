@@ -54,6 +54,7 @@ eval $(gp env -e) &&
             git clone $(echo $CONFIGURATION_REPOSITORY_URL)
         fi
     fi &&
+    source installPowerShellOnUbuntu.bash &&
     if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ]; then
         if [ -d microsoft-edge-config-private ]; then
             cd microsoft-edge-config-private &&
