@@ -33,13 +33,18 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
  && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
+ && VERSION_ID=$(sudo grep -oP 'VERSION_ID="\K[^"]+' /etc/os-release) \
+ && wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb \
  && sudo apt update \
  && sudo apt install -y \
      libxtst6 aria2 gh \
     #  ./$keyExplorerInstallationFile \
      tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget \
     #  microsoft-edge-dev \
-     squid postgresql-16 dotnet-sdk-7.0 \
+     squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb \
+ && sudo apt update \
+ && sudo apt install -y \
+     powershell \
  && sudo rm -rf /var/lib/apt/lists/* \
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
