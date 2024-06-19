@@ -54,10 +54,19 @@ eval $(gp env -e) &&
             git clone $(echo $CONFIGURATION_REPOSITORY_URL)
         fi
     fi &&
-    pwd &&
-    ls -a &&
-    source installPeaZip.bash &&
-    source installPowerShellOnUbuntu.bash &&
+    peaZipInstallationFile=PeaZip.deb &&
+    gh release download --pattern '*GTK*.deb' --repo peazip/PeaZip --output $peaZipInstallationFile &&
+    source /etc/os-release &&
+    wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb &&
+    sudo apt update &&
+    sudo apt install -y \
+        ./$peaZipInstallationFile ./packages-microsoft-prod.deb &&
+    rm $peaZipInstallationFile &&
+    rm packages-microsoft-prod.deb &&
+    sudo apt update &&
+    sudo apt install -y \
+        powershell &&
+    sudo rm -rf /var/lib/apt/lists/* &&
     if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ]; then
         if [ -d microsoft-edge-config-private ]; then
             cd microsoft-edge-config-private &&
