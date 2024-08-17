@@ -218,7 +218,7 @@ RUN git config --global lfs.activitytimeout 1000 \
  && git config --global credential.credentialStore cache \
  && git config --global credential.cacheOptions "--timeout 1576800000" \
  && git config --global http.postBuffer 1048576000 \
- && git config --global https.postBuffer 1048576000
+ && git config --global https.postBuffer 1048576000 \
  && dotnet tool install -g git-credential-manager
 #  && dotnet tool install -g git-credential-manager \
 #  && git-credential-manager configure
