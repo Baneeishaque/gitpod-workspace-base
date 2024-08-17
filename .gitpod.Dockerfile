@@ -20,8 +20,8 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
 #  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
 # && visualStudioCodeInstallationFile=visualStudioCode.deb \
 # && wget --output-document=$visualStudioCodeInstallationFile "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" \
- && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
- && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
+#  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
+#  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
  && brew install pup \
  && dBeaverDownloadUrl=$(echo ${dBeaverDownloadPageUrl}/$(wget -O - ${dBeaverDownloadPageUrl} | pup 'table.s3_listing_files tbody tr td a attr{href}' | grep '.deb')) \
  && wget $dBeaverDownloadUrl \
@@ -43,16 +43,18 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo apt install -y \
      libxtst6 aria2 gh \
     #  ./$keyExplorerInstallationFile \
-     tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb kdiff3 dupeguru \
+     tree rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb kdiff3 dupeguru \
     #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
  && sudo apt update \
  && sudo apt install -y \
      powershell \
+#  && sudo apt install -y --force-yes \
+#      ./$visualStudioCodeInsidersInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/* \
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
- && rm $visualStudioCodeInsidersInstallationFile \
+#  && rm $visualStudioCodeInsidersInstallationFile \
  && rm $dBeaverInstallationFile \
  && rm $gitKrakenInstallationFile \
  && rm packages-microsoft-prod.deb \
