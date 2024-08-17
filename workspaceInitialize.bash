@@ -45,6 +45,13 @@ eval $(gp env -e) &&
     if [ ! -h $vscodeUserExtensionsFolder ]; then
         ln -s vscode-insider-extensions $vscodeUserExtensionsFolder
     fi &&
+    if [ ! -d downloads ]; then
+        mkdir downloads
+    fi &&
+    userDownloadsFolder="$HOME/Downloads" &&
+    if [ ! -h "$userDownloadsFolder" ]; then
+        ln -s downloads "$userDownloadsFolder"
+    fi &&
     if [ -d configurations-private ]; then
         cd configurations-private &&
             git pull &&
