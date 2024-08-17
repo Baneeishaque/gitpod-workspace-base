@@ -41,9 +41,27 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
 #  && wget --output-document=$peaZipInstallationFile $(curl -s https://api.github.com/repos/peazip/peaZip/releases/latest | sed 's/[()",{}]/ /g; s/ /\n/g' | grep "https.*releases/download.*GTK.*deb") \
  && sudo apt update \
  && sudo apt install -y \
-     libxtst6 aria2 gh \
+     libxtst6 \
+     aria2 \
+     gh \
     #  ./$keyExplorerInstallationFile \
-     tree rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb kdiff3 dupeguru \
+     tree \
+     rclone-browser \
+     ./$dBeaverInstallationFile \
+     firefox \
+     qbittorrent \
+     persepolis \
+     ./$gitKrakenInstallationFile \
+     p7zip-full \
+     software-properties-common \
+     apt-transport-https \
+     wget \
+     squid \
+     postgresql-16 \
+     dotnet-sdk-7.0 \
+     ./packages-microsoft-prod.deb \
+     kdiff3 \
+     dupeguru \
     #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
  && sudo apt update \
