@@ -41,7 +41,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo apt install -y \
      libxtst6 aria2 gh \
     #  ./$keyExplorerInstallationFile \
-     tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb \
+     tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb kdiff3 \
     #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
  && sudo apt update \
