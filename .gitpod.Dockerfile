@@ -43,7 +43,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
     #  ./$keyExplorerInstallationFile \
      tree ./$visualStudioCodeInsidersInstallationFile rclone-browser ./$dBeaverInstallationFile firefox qbittorrent persepolis ./$gitKrakenInstallationFile p7zip-full software-properties-common apt-transport-https wget \
     #  microsoft-edge-dev \
-     squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb ./$peaZipInstallationFile \
+     squid postgresql-16 dotnet-sdk-7.0 ./packages-microsoft-prod.deb ./$peaZipInstallationFile libgtk2.0-0 \
  && sudo apt update \
  && sudo apt install -y \
      powershell \
