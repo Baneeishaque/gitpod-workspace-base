@@ -54,7 +54,9 @@ eval $(gp env -e) &&
     fi &&
     if [ -d configurations-private ]; then
         cd configurations-private &&
+            git stash &&
             git pull &&
+            git stash pop &&
             cd ..
     else
         if [ -v CONFIGURATION_REPOSITORY_URL ]; then
