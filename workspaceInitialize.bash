@@ -56,7 +56,6 @@ eval $(gp env -e) &&
         cd configurations-private &&
             git stash &&
             git pull &&
-            git stash pop &&
             cd ..
     else
         if [ -v CONFIGURATION_REPOSITORY_URL ]; then
@@ -120,4 +119,7 @@ eval $(gp env -e) &&
     fvm spawn master build aar &&
     cd .. &&
     rm -rf my_module &&
-    source ~/.bashrc
+    source ~/.bashrc &&
+    cd configurations-private &&
+    git stash pop &&
+    cd ..
