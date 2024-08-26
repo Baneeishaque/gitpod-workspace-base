@@ -38,7 +38,7 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
  && sudo rm -rf /var/lib/apt/lists/*
 #  && rm $visualStudioCodeInsidersInstallationFile \
 #  && rm $peaZipInstallationFile
-
+ 
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
 # RUN wget ${chromeDriverDownloadUrl} \
 #  && chromeDriverArchieve=$(basename ${chromeDriverDownloadUrl}) \
