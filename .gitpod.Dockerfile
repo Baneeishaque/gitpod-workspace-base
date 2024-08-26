@@ -14,8 +14,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 # ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
 # RUN wget ${keyExplorerDownloadUrl} \
 #  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
-# && visualStudioCodeInstallationFile=visualStudioCode.deb \
-# && wget --output-document=$visualStudioCodeInstallationFile "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" \
 #  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
 #  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
 RUN sudo add-apt-repository -y ppa:persepolis/ppa \
@@ -48,7 +46,6 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
 #      ./$visualStudioCodeInsidersInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/*
 #  && rm $keyExplorerInstallationFile \
-#  && rm $visualStudioCodeInstallationFile \
 #  && rm $visualStudioCodeInsidersInstallationFile \
 #  && rm $peaZipInstallationFile
 
