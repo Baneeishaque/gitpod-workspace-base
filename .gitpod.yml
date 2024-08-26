@@ -28,9 +28,6 @@ tasks:
 # - name: Open Eclipse
 #   command: cd /usr/local/eclipse/ && ./eclipse
 
-# - name: Open Key Explorer
-#   command: kse
-
 # - name: Open Android Studio Canary
 #   command: cd /workspace && git clone --depth 1 "https://gitlab.com/baneeishaque/gitpod-workspace-full-vnc-1366x768-tint2-pcmanfm-zsh-android-studio.git" android-studio-config && rm -rf ~/.config/Google && mkdir -p ~/.config/Google && ln -s `pwd`/android-studio-config/AndroidStudioPreview2022.1-config ~/.config/Google/AndroidStudioPreview2022.1 && rm -rf ~/.local/share/Google && mkdir -p ~/.local/share/Google && ln -s `pwd`/android-studio-config/AndroidStudioPreview2022.1-local ~/.local/share/Google/AndroidStudioPreview2022.1 && rm -rf ~/.local/share/Google/consentOptions && ln -s `pwd`/android-studio-config/consentOptions ~/.local/share/Google/consentOptions && cd /usr/local/android-studio-canary/bin/ && ./studio.sh
 
