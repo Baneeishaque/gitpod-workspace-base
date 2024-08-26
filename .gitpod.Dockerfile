@@ -12,7 +12,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 #  && rm $intellijIdeaInstallationFile
 
 # ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
-ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 # RUN wget ${keyExplorerDownloadUrl} \
 #  && keyExplorerInstallationFile=$(basename ${keyExplorerDownloadUrl}) \
 # && visualStudioCodeInstallationFile=visualStudioCode.deb \
@@ -20,8 +19,6 @@ ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.de
 #  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
 #  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
 RUN brew install pup \
- && wget ${gitKrakenDownloadUrl} \
- && gitKrakenInstallationFile=$(basename ${gitKrakenDownloadUrl}) \
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
@@ -41,7 +38,6 @@ RUN brew install pup \
      firefox \
      qbittorrent \
      persepolis \
-     ./$gitKrakenInstallationFile \
      p7zip-full \
      software-properties-common \
      apt-transport-https \
@@ -62,7 +58,6 @@ RUN brew install pup \
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
 #  && rm $visualStudioCodeInsidersInstallationFile \
- && rm $gitKrakenInstallationFile \
  && rm packages-microsoft-prod.deb \
 #  && rm $peaZipInstallationFile \
  && phpMyAdminDownloadUrl=$(wget -O - https://www.phpmyadmin.net/downloads | pup 'a.download_popup attr{href}' | grep --max-count=1 'english.zip') \
