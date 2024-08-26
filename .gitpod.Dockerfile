@@ -18,8 +18,7 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 # && wget --output-document=$visualStudioCodeInstallationFile "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" \
 #  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
 #  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
-RUN brew install pup \
- && sudo add-apt-repository -y ppa:persepolis/ppa \
+RUN sudo add-apt-repository -y ppa:persepolis/ppa \
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
  && curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
@@ -58,17 +57,8 @@ RUN brew install pup \
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
 #  && rm $visualStudioCodeInsidersInstallationFile \
- && rm packages-microsoft-prod.deb \
-#  && rm $peaZipInstallationFile \
- && phpMyAdminDownloadUrl=$(wget -O - https://www.phpmyadmin.net/downloads | pup 'a.download_popup attr{href}' | grep --max-count=1 'english.zip') \
- && wget $phpMyAdminDownloadUrl \
- && phpMyAdminArchieveFile=$(basename $phpMyAdminDownloadUrl) \
- && sudo unzip $phpMyAdminArchieveFile -d /opt/ \
- && rm $phpMyAdminArchieveFile \
- && phpMyAdminFolder=$(echo $phpMyAdminArchieveFile | sed 's/\(.*\)\..*/\1/') \
- && sudo mv /opt/$phpMyAdminFolder /opt/phpMyAdmin-english \
- && sudo cp /opt/phpMyAdmin-english/config.sample.inc.php /opt/phpMyAdmin-english/config.inc.php \
- && printf "\n\$cfg['AllowArbitraryServer'] = true;" | sudo tee -a /opt/phpMyAdmin-english/config.inc.php >/dev/null
+ && rm packages-microsoft-prod.deb
+#  && rm $peaZipInstallationFile
 
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
 # RUN wget ${chromeDriverDownloadUrl} \
