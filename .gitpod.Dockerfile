@@ -28,7 +28,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo add-apt-repository -y ppa:persepolis/ppa \
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
- && sudo add-apt-repository -y ppa:dupeguru/ppa \
  && curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
  && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
@@ -56,7 +55,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
      dotnet-sdk-7.0 \
      ./packages-microsoft-prod.deb \
      kdiff3 \
-     dupeguru \
     #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
  && sudo apt update \
