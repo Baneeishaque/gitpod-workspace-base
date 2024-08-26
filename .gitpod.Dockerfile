@@ -1,8 +1,9 @@
 FROM gitpod/workspace-full-vnc
 
+ENV BUILDKIT_PROGRESS=plain
+
 RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
-ENV BUILDKIT_PROGRESS=plain
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 # RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
