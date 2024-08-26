@@ -12,7 +12,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 #  && rm $intellijIdeaInstallationFile
 
 # ARG keyExplorerDownloadUrl="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.1/kse_5.5.1_all.deb"
-ARG dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
 ARG gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -24,9 +23,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
 #  && visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
 #  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
  && brew install pup \
- && dBeaverDownloadUrl=$(echo ${dBeaverDownloadPageUrl}/$(wget -O - ${dBeaverDownloadPageUrl} | pup 'table.s3_listing_files tbody tr td a attr{href}' | grep '.deb')) \
- && wget $dBeaverDownloadUrl \
- && dBeaverInstallationFile=$(basename $dBeaverDownloadUrl) \
  && wget ${gitKrakenDownloadUrl} \
  && gitKrakenInstallationFile=$(basename ${gitKrakenDownloadUrl}) \
  && sudo add-apt-repository -y ppa:persepolis/ppa \
@@ -47,7 +43,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
     #  ./$keyExplorerInstallationFile \
      tree \
      rclone-browser \
-     ./$dBeaverInstallationFile \
      firefox \
      qbittorrent \
      persepolis \
@@ -73,7 +68,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
 #  && rm $visualStudioCodeInsidersInstallationFile \
- && rm $dBeaverInstallationFile \
  && rm $gitKrakenInstallationFile \
  && rm packages-microsoft-prod.deb \
 #  && rm $peaZipInstallationFile \
