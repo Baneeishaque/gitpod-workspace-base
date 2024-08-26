@@ -24,8 +24,6 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
  && curl https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
  && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
- && VERSION_ID=$(sudo grep -oP 'VERSION_ID="\K[^"]+' /etc/os-release) \
- && wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb \
 #  && peaZipInstallationFile=PeaZip.deb \
 #  && wget --output-document=$peaZipInstallationFile $(curl -s https://api.github.com/repos/peazip/peaZip/releases/latest | sed 's/[()",{}]/ /g; s/ /\n/g' | grep "https.*releases/download.*GTK.*deb") \
  && sudo apt update \
@@ -44,20 +42,15 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
      squid \
      postgresql-16 \
      dotnet-sdk-7.0 \
-     ./packages-microsoft-prod.deb \
      kdiff3 \
     #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
- && sudo apt update \
- && sudo apt install -y \
-     powershell \
 #  && sudo apt install -y --force-yes \
 #      ./$visualStudioCodeInsidersInstallationFile \
- && sudo rm -rf /var/lib/apt/lists/* \
+ && sudo rm -rf /var/lib/apt/lists/*
 #  && rm $keyExplorerInstallationFile \
 #  && rm $visualStudioCodeInstallationFile \
 #  && rm $visualStudioCodeInsidersInstallationFile \
- && rm packages-microsoft-prod.deb
 #  && rm $peaZipInstallationFile
 
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
