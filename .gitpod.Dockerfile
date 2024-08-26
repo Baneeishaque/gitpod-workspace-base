@@ -86,26 +86,6 @@ RUN brew install pup \
 
 RUN curl https://rclone.org/install.sh | sudo bash -s beta
 
-# ARG androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
-# RUN cd /workspace \
-#  && wget ${androidCommandLineToolsLinuxDownloadUrl} \
-#  && androidCommandLineToolsArchieve=$(basename ${androidCommandLineToolsLinuxDownloadUrl}) \
-#  && unzip $androidCommandLineToolsArchieve \
-#  && mkdir -p Android/Sdk/cmdline-tools/latest \
-#  && mv cmdline-tools/* Android/Sdk/cmdline-tools/latest/ \
-#  && rmdir cmdline-tools/ \
-#  && rm $androidCommandLineToolsArchieve
-
-# ARG androidPlatformVersion="android-33"
-# ARG androidBuildToolsVersion="33.0.0"
-# ARG androidSourcesPlatformVersion="android-33-ext3"
-# # ARG cmakeVersion="3.22.1"
-# # ARG ndkVersion="25.1.8937393"
-# RUN yes | /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
-#  && /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}"
-# # RUN yes | Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
-# #  && Android/Sdk/cmdline-tools/latest/bin/sdkmanager "platforms;${androidPlatformVersion}" "build-tools;${androidBuildToolsVersion}" "sources;${androidPlatformVersion}" "cmake;${cmakeVersion}" "ndk;${ndkVersion}"
-
 ENV ANDROID_HOME="/workspace/Android/Sdk"
 
 ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
