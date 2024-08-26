@@ -46,9 +46,6 @@ tasks:
 # - name: Check Poetry
 #   command: poetry --version
 
-# - name: Check tree
-#   command: tree --version
-
 # - name: Check VS Code
 #   command: code --version
 

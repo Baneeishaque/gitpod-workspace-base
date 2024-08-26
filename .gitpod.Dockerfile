@@ -30,7 +30,6 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
  && sudo apt install -y \
      libxtst6 \
     #  ./$keyExplorerInstallationFile \
-     tree \
      rclone-browser \
      firefox \
      qbittorrent \
