@@ -43,7 +43,6 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
  && sudo apt update \
  && sudo apt install -y \
      libxtst6 \
-     aria2 \
      gh \
     #  ./$keyExplorerInstallationFile \
      tree \
