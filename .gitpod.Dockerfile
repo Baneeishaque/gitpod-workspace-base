@@ -13,11 +13,6 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 
 # ENV PATH=$HOME/apktool:$PATH
 
-# RUN cd $HOME \
-#  && wget "https://gist.githubusercontent.com/SergLam/3adb64051a1c8ebd8330191aedcefe47/raw/7936d8acde59cc31f487bc455904e3942d7ecbda/xcode-downloader.rb" \
-#  && chmod a+x xcode-downloader.rb \
-#  && sudo mv xcode-downloader.rb /usr/local/bin/
-
 ENV FVM_CACHE_PATH=/workspace/fvm
 
 RUN brew tap leoafarias/fvm \
