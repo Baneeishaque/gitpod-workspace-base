@@ -11,9 +11,6 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-# RUN cd $HOME \
-#  && wget https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-1.6.6.jar
-
 # ARG apktoolDownloadUrl="https://github.com/iBotPeaches/Apktool/releases/download/v2.6.1/apktool_2.6.1.jar"
 # RUN cd $HOME \
 #  && mkdir apktool \
