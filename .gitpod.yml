@@ -13,12 +13,6 @@ tasks:
   - name: Initialize Workspace
     command: bash workspaceInitialize.bash
 
-# - name: Setup JADX & dex2jar
-#   command: |
-#     echo "export PATH=$HOME/$(cat $HOME/dexToolsFolder):$HOME/$(cat $HOME/dexToolsFolder)/bin:$HOME/$(cat $HOME/jadxFolder)/bin:$PATH" >> ~/.bashrc \
-#     && rm $HOME/dexToolsFolder $HOME/jadxFolder \
-#     && source ~/.bashrc
-
 # - name: Open Google Chrome
 #   command: bash launchGoogleChrome.bash
 

@@ -13,24 +13,6 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 
 # ENV PATH=$HOME/apktool:$PATH
 
-# ARG jadxDownloadUrl="https://github.com/skylot/jadx/releases/download/v1.4.5/jadx-1.4.5.zip"
-# RUN cd $HOME \
-#  && wget ${jadxDownloadUrl} \
-#  && jadxArchieveFile=$(basename ${jadxDownloadUrl}) \
-#  && jadxFolder=$(echo $jadxArchieveFile | sed 's/\(.*\)\..*/\1/') \
-#  && unzip $jadxArchieveFile -d $jadxFolder \
-#  && rm $jadxArchieveFile \
-#  && sed -i 's/DEFAULT_JVM_OPTS=""/DEFAULT_JVM_OPTS='"'"'"-Dsun.java2d.xrender=false"'"'"'/g' $HOME/$jadxFolder/bin/jadx-gui \
-#  && echo $jadxFolder > $HOME/jadxFolder
-
-# ARG dexToolsDownloadUrl="https://github.com/pxb1988/dex2jar/releases/download/v2.2-SNAPSHOT-2021-10-31/dex-tools-2.2-SNAPSHOT-2021-10-31.zip"
-# RUN cd $HOME \
-#  && wget ${dexToolsDownloadUrl} \
-#  && dexToolsArchieveFile=$(basename ${dexToolsDownloadUrl}) \
-#  && unzip $dexToolsArchieveFile \
-#  && rm $dexToolsArchieveFile \
-#  && echo $dexToolsArchieveFile | sed 's/\(.*\)\..*/\1/' | cut -d '-' -f1,2,3,4 > $HOME/dexToolsFolder
-
 # RUN cd $HOME \
 #  && wget "https://gist.githubusercontent.com/SergLam/3adb64051a1c8ebd8330191aedcefe47/raw/7936d8acde59cc31f487bc455904e3942d7ecbda/xcode-downloader.rb" \
 #  && chmod a+x xcode-downloader.rb \
