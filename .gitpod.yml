@@ -22,9 +22,6 @@ tasks:
 # - name: Open Google Chrome
 #   command: bash launchGoogleChrome.bash
 
-# - name: Check Poetry
-#   command: poetry --version
-
 jetbrains:
   intellij:
     prebuilds:

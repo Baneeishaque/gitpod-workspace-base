@@ -11,10 +11,6 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master
-# RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master \
-#  && poetry completions bash >> ~/.bash_completion
-
 # RUN brew install thefuck \
 #  && echo 'eval "$(thefuck --alias)"' >> ~/.bashrc
 
