@@ -11,14 +11,6 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-# ARG androidStudioBetaDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.3.1.15/android-studio-2021.3.1.15-linux.tar.gz"
-# RUN cd $HOME \
-#  && wget ${androidStudioBetaDownloadUrl} \
-#  && androidStudioBetaInstallationFile=$(basename ${androidStudioBetaDownloadUrl}) \
-#  && sudo tar -xvf $androidStudioBetaInstallationFile -C /usr/local/ \
-#  && sudo mv /usr/local/android-studio/ /usr/local/android-studio-beta/ \
-#  && rm $androidStudioBetaInstallationFile
-
 RUN pip install --upgrade pip && pip install getgist
 
 RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github.com/python-poetry/poetry.git@master
