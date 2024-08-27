@@ -6,8 +6,6 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-# RUN peaZipInstallationFile=PeaZip.deb \
-#  && wget --output-document=$peaZipInstallationFile $(curl -s https://api.github.com/repos/peazip/peaZip/releases/latest | sed 's/[()",{}]/ /g; s/ /\n/g' | grep "https.*releases/download.*GTK.*deb") \
 RUN sudo apt update \
  && sudo apt install -y \
      rclone-browser \
@@ -17,9 +15,7 @@ RUN sudo apt update \
      squid \
      dotnet-sdk-7.0 \
      kdiff3 \
-    #  ./$peaZipInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/*
-#  && rm $peaZipInstallationFile
  
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
 # RUN wget ${chromeDriverDownloadUrl} \
