@@ -6,8 +6,7 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-RUN sudo add-apt-repository -y ppa:persepolis/ppa \
- && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
+RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
  && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
@@ -18,7 +17,6 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
      rclone-browser \
      firefox \
      qbittorrent \
-     persepolis \
      p7zip-full \
      squid \
      postgresql-16 \
