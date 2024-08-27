@@ -10,12 +10,6 @@ ENV ANDROID_HOME="/workspace/Android/Sdk"
 
 ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 
-# ARG eclipseDownloadUrl="https://ftp.yz.yamagata-u.ac.jp/pub/eclipse/technology/epp/downloads/release/2022-09/R/eclipse-java-2022-09-R-linux-gtk-x86_64.tar.gz"
-# RUN wget ${eclipseDownloadUrl} \
-#  && eclipseInstallationFile=$(basename ${eclipseDownloadUrl}) \
-#  && sudo tar -xvf $eclipseInstallationFile --directory=/usr/local/  --no-same-owner \
-#  && rm $eclipseInstallationFile
-
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
 # ARG androidStudioCanaryDownloadUrl="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.2.1.6/android-studio-2022.2.1.6-linux.tar.gz"
