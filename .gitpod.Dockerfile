@@ -6,9 +6,7 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
- && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
- && echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
+RUN echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
  && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
 #  && peaZipInstallationFile=PeaZip.deb \
 #  && wget --output-document=$peaZipInstallationFile $(curl -s https://api.github.com/repos/peazip/peaZip/releases/latest | sed 's/[()",{}]/ /g; s/ /\n/g' | grep "https.*releases/download.*GTK.*deb") \
@@ -22,7 +20,6 @@ RUN wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key
      postgresql-16 \
      dotnet-sdk-7.0 \
      kdiff3 \
-    #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/*
 #  && rm $peaZipInstallationFile

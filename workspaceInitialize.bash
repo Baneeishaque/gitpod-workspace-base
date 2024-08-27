@@ -62,17 +62,6 @@ eval $(gp env -e) &&
             git clone $(echo $CONFIGURATION_REPOSITORY_URL)
         fi
     fi &&
-    # if [ -v EDGE_CONFIGURATION_REPOSITORY_URL ]; then
-    #     if [ -d microsoft-edge-config-private ]; then
-    #         cd microsoft-edge-config-private &&
-    #             git pull &&
-    #             cd ..
-    #     else
-    #         git clone $(echo $EDGE_CONFIGURATION_REPOSITORY_URL)
-    #     fi &&
-    #         rm -rf ~/.config/microsoft-edge-dev &&
-    #         ln -s microsoft-edge-config-private/microsoft-edge-dev ~/.config/microsoft-edge-dev
-    # fi &&
     if [ ! -d Periodic-Mouse-Click-Chrome-Selenium-Python ]; then
         git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
     fi &&
