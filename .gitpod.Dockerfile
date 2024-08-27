@@ -16,7 +16,7 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 ENV FVM_CACHE_PATH=/workspace/fvm
 
 RUN brew tap leoafarias/fvm \
- && brew install leoafarias/fvm/fvm glab \
+ && brew install leoafarias/fvm/fvm \
  && brew autoremove \
  && brew cleanup
 
