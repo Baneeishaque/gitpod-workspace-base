@@ -8,7 +8,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 
 RUN sudo apt update \
  && sudo apt install -y \
-     qbittorrent \
      p7zip-full \
      squid \
      dotnet-sdk-7.0 \
