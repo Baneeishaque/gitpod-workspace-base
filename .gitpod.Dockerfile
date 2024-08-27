@@ -8,7 +8,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 
 RUN sudo apt update \
  && sudo apt install -y \
-     squid \
      dotnet-sdk-7.0 \
      kdiff3 \
  && sudo rm -rf /var/lib/apt/lists/*
@@ -106,10 +105,6 @@ RUN curl -sSL https://install.python-poetry.org | python3 - --git https://github
 #  && wget "https://gist.githubusercontent.com/SergLam/3adb64051a1c8ebd8330191aedcefe47/raw/7936d8acde59cc31f487bc455904e3942d7ecbda/xcode-downloader.rb" \
 #  && chmod a+x xcode-downloader.rb \
 #  && sudo mv xcode-downloader.rb /usr/local/bin/
-
-RUN sudo systemctl enable squid \
- && sudo sed -i 's/http_access deny all/http_access allow all/g' /etc/squid/squid.conf \
- && sudo service squid restart
 
 ENV FVM_CACHE_PATH=/workspace/fvm
 

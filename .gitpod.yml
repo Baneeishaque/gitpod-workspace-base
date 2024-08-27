@@ -40,9 +40,6 @@ tasks:
 # - name: Check Poetry
 #   command: poetry --version
 
-# - name: Run Squid Proxy Server
-#   command: sudo service squid restart && sudo service squid status
-
 jetbrains:
   intellij:
     prebuilds:
