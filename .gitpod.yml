@@ -22,12 +22,6 @@ tasks:
 # - name: Open Google Chrome
 #   command: bash launchGoogleChrome.bash
 
-# - name: Get Gist
-#   command: getgist <username> <filename>
-
-# - name: List Gists
-#   command: lsgists <username>
-
 # - name: Check Poetry
 #   command: poetry --version
 
