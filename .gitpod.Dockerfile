@@ -6,18 +6,15 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-RUN echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null \
- && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
-#  && peaZipInstallationFile=PeaZip.deb \
+# RUN peaZipInstallationFile=PeaZip.deb \
 #  && wget --output-document=$peaZipInstallationFile $(curl -s https://api.github.com/repos/peazip/peaZip/releases/latest | sed 's/[()",{}]/ /g; s/ /\n/g' | grep "https.*releases/download.*GTK.*deb") \
- && sudo apt update \
+RUN sudo apt update \
  && sudo apt install -y \
      rclone-browser \
      firefox \
      qbittorrent \
      p7zip-full \
      squid \
-     postgresql-16 \
      dotnet-sdk-7.0 \
      kdiff3 \
     #  ./$peaZipInstallationFile \
@@ -139,14 +136,8 @@ RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tig
 
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update && sdk upgrade"
 
-# Setup PostgreSQL server for user gitpod
 ENV PATH=$PATH:/usr/lib/postgresql/16/bin
 ENV PGDATA=/home/gitpod/.pg_ctl/data
-RUN mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/data ~/.pg_ctl/sockets \
- && initdb -D ~/.pg_ctl/data/ \
- && printf "#!/bin/bash\npg_ctl -D ~/.pg_ctl/data/ -l ~/.pg_ctl/log -o \"-k ~/.pg_ctl/sockets\" start\n" > ~/.pg_ctl/bin/pg_start \
- && printf "#!/bin/bash\npg_ctl -D ~/.pg_ctl/data/ -l ~/.pg_ctl/log -o \"-k ~/.pg_ctl/sockets\" stop\n" > ~/.pg_ctl/bin/pg_stop \
- && chmod +x ~/.pg_ctl/bin/*
 ENV PATH=$PATH:$HOME/.pg_ctl/bin
 ENV DATABASE_URL="postgresql://gitpod@localhost"
 
