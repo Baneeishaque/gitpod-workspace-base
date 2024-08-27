@@ -8,7 +8,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 
 RUN sudo apt update \
  && sudo apt install -y \
-     dotnet-sdk-7.0 \
      kdiff3 \
  && sudo rm -rf /var/lib/apt/lists/*
  
@@ -133,7 +132,4 @@ RUN git config --global lfs.activitytimeout 1000 \
  && git config --global credential.credentialStore cache \
  && git config --global credential.cacheOptions "--timeout 1576800000" \
  && git config --global http.postBuffer 1048576000 \
- && git config --global https.postBuffer 1048576000 \
- && dotnet tool install -g git-credential-manager
-#  && dotnet tool install -g git-credential-manager \
-#  && git-credential-manager configure
+ && git config --global https.postBuffer 1048576000
