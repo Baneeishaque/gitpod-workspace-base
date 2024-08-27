@@ -11,12 +11,6 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-# ARG pyCharmDownloadUrl="https://download.jetbrains.com/python/pycharm-professional-223.6160.21.tar.gz"
-# RUN wget ${pyCharmDownloadUrl} \
-#  && pyCharmInstallationFile=$(basename ${pyCharmDownloadUrl}) \
-#  && sudo tar -xvf $pyCharmInstallationFile -C /usr/local/ \
-#  && rm $pyCharmInstallationFile
-
 # RUN cd $HOME \
 #  && wget https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-1.6.6.jar
 
