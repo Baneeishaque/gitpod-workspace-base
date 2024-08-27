@@ -62,14 +62,6 @@ eval $(gp env -e) &&
             git clone $(echo $CONFIGURATION_REPOSITORY_URL)
         fi
     fi &&
-    if [ ! -d Periodic-Mouse-Click-Chrome-Selenium-Python ]; then
-        git clone https://github.com/Baneeishaque/Periodic-Mouse-Click-Chrome-Selenium-Python.git
-    fi &&
-    cd Periodic-Mouse-Click-Chrome-Selenium-Python &&
-    git pull &&
-    pyenv install --skip-existing &&
-    pip install -r requirements.txt &&
-    cd .. &&
     if [ ! -d Android/Sdk ]; then
         brew install pup &&
         androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/$(wget -O - "https://developer.android.com/studio#command-tools" | pup '[data-modal-dialog-id="sdk_linux_download"] text{}')" &&
