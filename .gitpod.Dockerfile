@@ -11,9 +11,6 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-# RUN brew install thefuck \
-#  && echo 'eval "$(thefuck --alias)"' >> ~/.bashrc
-
 # RUN brew install gradle-completion \
 #  && echo '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"' >> ~/.bash_profile
 
