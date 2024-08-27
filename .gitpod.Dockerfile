@@ -5,11 +5,6 @@ ENV BUILDKIT_PROGRESS=plain
 RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
-
-RUN sudo apt update \
- && sudo apt install -y \
-     kdiff3 \
- && sudo rm -rf /var/lib/apt/lists/*
  
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
 # RUN wget ${chromeDriverDownloadUrl} \
