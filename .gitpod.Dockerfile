@@ -6,8 +6,6 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-RUN curl https://rclone.org/install.sh | sudo bash -s beta
-
 ENV ANDROID_HOME="/workspace/Android/Sdk"
 
 ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
