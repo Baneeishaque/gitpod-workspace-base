@@ -14,12 +14,6 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 # ENV PATH=$HOME/apktool:$PATH
 
 ENV FVM_CACHE_PATH=/workspace/fvm
-
-RUN brew tap leoafarias/fvm \
- && brew install leoafarias/fvm/fvm \
- && brew autoremove \
- && brew cleanup
-
 ENV PATH=$FVM_CACHE_PATH/default/bin:$HOME/.pub-cache/bin:$PATH
 
 COPY tigerVncGeometry.txt $HOME

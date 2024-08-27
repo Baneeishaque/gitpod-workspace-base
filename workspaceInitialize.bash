@@ -82,31 +82,6 @@ eval $(gp env -e) &&
             rm $androidCommandLineToolsArchieve &&
             yes | /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
     fi &&
-    if [ -d fvm/versions/master ]; then
-        cd fvm/versions/master &&
-            git pull &&
-            cd /workspace
-    fi &&
-    . /home/gitpod/.sdkman/bin/sdkman-init.sh &&
-    sdk use java $(sdk list java | grep "local only" | grep "17" | awk '{print $NF}') &&
-    # fvm install stable &&
-    # fvm install beta &&
-    fvm install master &&
-    # fvm global master &&
-    fvm spawn master create my_app &&
-    cd my_app &&
-    fvm spawn master build bundle &&
-    fvm spawn master build apk &&
-    fvm spawn master build appbundle &&
-    fvm spawn master build linux &&
-    fvm spawn master build web &&
-    cd .. &&
-    rm -rf my_app &&
-    fvm spawn master create my_module --template=module &&
-    cd my_module &&
-    fvm spawn master build aar &&
-    cd .. &&
-    rm -rf my_module &&
     source ~/.bashrc &&
     cd configurations-private &&
     git stash pop &&
