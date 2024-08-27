@@ -11,15 +11,6 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-# ARG apktoolDownloadUrl="https://github.com/iBotPeaches/Apktool/releases/download/v2.6.1/apktool_2.6.1.jar"
-# RUN cd $HOME \
-#  && mkdir apktool \
-#  && cd apktool \
-#  && wget https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool ${apktoolDownloadUrl} \
-#  && apktoolJarFile=$(basename ${apktoolDownloadUrl}) \
-#  && mv $apktoolJarFile apktool.jar \
-#  && chmod +x apktool apktool.jar
-
 # ENV PATH=$HOME/apktool:$PATH
 
 # ARG jadxDownloadUrl="https://github.com/skylot/jadx/releases/download/v1.4.5/jadx-1.4.5.zip"
