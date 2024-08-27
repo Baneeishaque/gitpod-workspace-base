@@ -5,15 +5,6 @@ ENV BUILDKIT_PROGRESS=plain
 RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
- 
-# ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
-# RUN wget ${chromeDriverDownloadUrl} \
-#  && chromeDriverArchieve=$(basename ${chromeDriverDownloadUrl}) \
-#  && unzip $chromeDriverArchieve \
-#  && rm $chromeDriverArchieve \
-#  && chromeDriverExecutable=chromedriver \
-#  && sudo mv $chromeDriverExecutable /usr/bin/ \
-#  && sudo chmod a+x /usr/bin/$chromeDriverExecutable
 
 RUN curl https://rclone.org/install.sh | sudo bash -s beta
 
