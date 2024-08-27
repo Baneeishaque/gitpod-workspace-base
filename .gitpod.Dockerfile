@@ -6,11 +6,6 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-# RUN intellijIdeaInstallationFile=ideaIU.tar.gz \
-#  && wget --output-document=$intellijIdeaInstallationFile "https://download.jetbrains.com/product?code=IIU&latest&distribution=linux" \
-#  && sudo tar -xvf $intellijIdeaInstallationFile -C /usr/local/ \
-#  && rm $intellijIdeaInstallationFile
-
 # RUN visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
 #  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
 RUN sudo add-apt-repository -y ppa:persepolis/ppa \
