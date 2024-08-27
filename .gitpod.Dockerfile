@@ -8,7 +8,6 @@ RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /e
 
 RUN sudo apt update \
  && sudo apt install -y \
-     rclone-browser \
      firefox \
      qbittorrent \
      p7zip-full \
