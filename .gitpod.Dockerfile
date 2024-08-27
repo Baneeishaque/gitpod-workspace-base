@@ -6,8 +6,6 @@ RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
 RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
-# RUN visualStudioCodeInsidersInstallationFile=visualStudioCodeInsiders.deb \
-#  && wget --output-document=$visualStudioCodeInsidersInstallationFile "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64" \
 RUN sudo add-apt-repository -y ppa:persepolis/ppa \
  && wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - \
  && sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" \
@@ -28,10 +26,7 @@ RUN sudo add-apt-repository -y ppa:persepolis/ppa \
      kdiff3 \
     #  microsoft-edge-dev \
     #  ./$peaZipInstallationFile \
-#  && sudo apt install -y --force-yes \
-#      ./$visualStudioCodeInsidersInstallationFile \
  && sudo rm -rf /var/lib/apt/lists/*
-#  && rm $visualStudioCodeInsidersInstallationFile \
 #  && rm $peaZipInstallationFile
  
 # ARG chromeDriverDownloadUrl=https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
