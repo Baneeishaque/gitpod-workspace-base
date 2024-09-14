@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full-vnc
+FROM gitpod/workspace-full
 
 ENV BUILDKIT_PROGRESS=plain
 
@@ -15,9 +15,6 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 
 ENV FVM_CACHE_PATH=/workspace/fvm
 ENV PATH=$FVM_CACHE_PATH/default/bin:$HOME/.pub-cache/bin:$PATH
-
-COPY tigerVncGeometry.txt $HOME
-RUN searchKey='test -e "$GITPOD_REPO_ROOT"' && TIGERVNC_GEOMETRY=$(cat $HOME/tigerVncGeometry.txt) && sed -i "s|$searchKey && gp-vncsession|export TIGERVNC_GEOMETRY=$TIGERVNC_GEOMETRY \&\& $searchKey \&\& gp-vncsession|" $HOME/.bashrc
 
 RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update && sdk upgrade"
 
