@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source ./installPhpMyAdmin.bash
 ./installPhpMyAdmin.bash
 cd $phpMyAdminInstallFolder

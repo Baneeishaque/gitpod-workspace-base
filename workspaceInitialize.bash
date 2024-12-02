@@ -1,3 +1,5 @@
+#!/bin/bash
+
 eval $(gp env -e) &&
     if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ]; then
         bashHubConfigurationFolder=$HOME/.bashhub &&

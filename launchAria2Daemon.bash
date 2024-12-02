@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ./installAria2.bash
 ./copyConfigurations.bash
 # TODO: Get session file path from conf file

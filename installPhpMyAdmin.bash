@@ -1,3 +1,5 @@
+#!/bin/bash
+
 phpMyAdminInstallFolder=/opt/phpMyAdmin-english
 if [ ! -d $phpMyAdminInstallFolder ]; then
     brew install pup

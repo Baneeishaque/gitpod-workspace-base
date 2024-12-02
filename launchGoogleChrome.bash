@@ -1,3 +1,5 @@
+#!/bin/bash
+
 eval $(gp env -e)
 cd /workspace
 chromeConfigurationFolder=chrome-config

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd /workspace
 if [ -d configurations-private ]; then
     cd configurations-private

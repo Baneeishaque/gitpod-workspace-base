@@ -1,3 +1,5 @@
+#!/bin/bash
+
 gitKrakenDownloadUrl="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 wget $gitKrakenDownloadUrl
 gitKrakenInstallationFile=$(basename $gitKrakenDownloadUrl)
