@@ -1,11 +1,21 @@
 #!/bin/bash
 
+SOURCE=${BASH_SOURCE[0]}
+while [ -L "$SOURCE" ]; do
+  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE
+done
+DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+
 # Source sdkman initialization script
 if [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
 ./installFVM.bash
+
+sudo apt install -y curl git unzip xz-utils zip libglu1-mesa
 
 # Navigate to the workspace directory
 cd /workspace
@@ -143,11 +153,21 @@ else
     sdk use java "$selected_java_version"
 fi
 
+. $DIR/installAndroidSdk.bash
+
 fvm spawn master create my_app
 cd my_app
 fvm spawn master build bundle
 fvm spawn master build apk
 fvm spawn master build appbundle
+
+sudo apt update
+sudo apt install -y \
+      clang cmake git \
+      ninja-build pkg-config \
+      libgtk-3-dev liblzma-dev \
+      libstdc++-12-dev
+
 fvm spawn master build linux
 fvm spawn master build web
 cd ..
