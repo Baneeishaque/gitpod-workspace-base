@@ -32,7 +32,7 @@ fi
 
 # Ensure hxselect is installed
 if ! command -v hxselect &>/dev/null; then
-    sudo apt-get install -y html-xml-utils
+    sudo apt install -y html-xml-utils
 fi
 
 # Extract the current Gradle version from the gradle-wrapper.properties file
