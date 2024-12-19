@@ -1,5 +1,37 @@
 #!/bin/bash
 
+# Install jq if not already installed
+if ! command -v jq &>/dev/null; then
+    brew install jq
+fi
+
+# Identify the OS and set the URL accordingly
+os=$(uname -s | tr '[:upper:]' '[:lower:]')
+if [[ "$os" == "darwin" ]]; then
+    json_url="https://storage.googleapis.com/flutter_infra_release/releases/releases_macos.json"
+else
+    json_url="https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json"
+fi
+
+# Fetch the JSON data
+json_data=$(curl -s "$json_url")
+
+# Extract valid versions from the JSON data
+valid_versions=$(echo "$json_data" | jq -r '.releases[].version')
+
+# Set the user_version variable
+user_version=${1:-master}
+
+# Validate the user_version if it's not "master"
+if [[ "$user_version" != "master" ]]; then
+    if ! echo "$valid_versions" | grep -qw "$user_version"; then
+        echo "Error: The version '$user_version' is not a valid fvm version."
+        echo "Please use one of the following versions:"
+        echo "$valid_versions" | tr ' ' '\n'
+        exit 1
+    fi
+fi
+
 SOURCE=${BASH_SOURCE[0]}
 while [ -L "$SOURCE" ]; do
   DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
@@ -19,14 +51,14 @@ sudo apt install -y curl git unzip xz-utils zip libglu1-mesa
 
 # Navigate to the workspace directory
 cd /workspace
-if [ -d fvm/versions/master ]; then
-    cd fvm/versions/master
+if [ -d "fvm/versions/$user_version" ]; then
+    cd "fvm/versions/$user_version"
     git pull
     cd /workspace
 else
     # fvm install stable
     # fvm install beta
-    fvm install master
+    fvm install "$user_version"
     # fvm global master
 fi
 
@@ -36,7 +68,7 @@ if ! command -v hxselect &>/dev/null; then
 fi
 
 # Extract the current Gradle version from the gradle-wrapper.properties file
-gradleVersion=$(grep 'distributionUrl' "fvm/versions/master/examples/hello_world/android/gradle/wrapper/gradle-wrapper.properties" | cut -d'=' -f2 | cut -d'-' -f2)
+gradleVersion=$(grep 'distributionUrl' "fvm/versions/$user_version/examples/hello_world/android/gradle/wrapper/gradle-wrapper.properties" | cut -d'=' -f2 | cut -d'-' -f2)
 echo "Gradle Version: $gradleVersion"
 
 table=$(curl -s https://docs.gradle.org/current/userguide/compatibility.html | hxnormalize -x 2>/dev/null | hxselect 'table.tableblock.frame-all.grid-all.stretch tbody')
@@ -155,11 +187,11 @@ fi
 
 . $DIR/installAndroidSdk.bash
 
-fvm spawn master create my_app
+fvm spawn "$user_version" create my_app
 cd my_app
-fvm spawn master build bundle
-fvm spawn master build apk
-fvm spawn master build appbundle
+fvm spawn "$user_version" build bundle
+fvm spawn "$user_version" build apk
+fvm spawn "$user_version" build appbundle
 
 sudo apt update
 sudo apt install -y \
@@ -168,13 +200,13 @@ sudo apt install -y \
       libgtk-3-dev liblzma-dev \
       libstdc++-12-dev
 
-fvm spawn master build linux
-fvm spawn master build web
+fvm spawn "$user_version" build linux
+fvm spawn "$user_version" build web
 cd ..
 rm -rf my_app
 
-fvm spawn master create my_module --template=module
+fvm spawn "$user_version" create my_module --template=module
 cd my_module
-fvm spawn master build aar
+fvm spawn "$user_version" build aar
 cd ..
 rm -rf my_module
