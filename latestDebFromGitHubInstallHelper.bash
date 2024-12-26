@@ -3,7 +3,11 @@
 source ./remoteDebInstallHelper.bash
 
 installLatestDebFromGithub() {
+
+    ./installJq.bash
+
     local repository=$1
-    local searchTerm=$2
-    installRemoteDeb "https://github.com$(curl -s https://github.com/$repository/releases | grep -oP 'href="\/'$repository'\/releases\/download\/v[\d\.]+\/'$searchTerm'\.deb' | sed 's/href="//')"
+    local api_url="https://api.github.com/repos/$repository/releases/latest"
+    local download_url=$(curl -s $api_url | jq -r '.assets[] | select(.name | endswith(".deb")) | .browser_download_url')
+    installRemoteDeb $download_url
 }
