@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./updateHomebrew.bash
+source ./brewFormulaInstallHelper.bash
+
 brew tap leoafarias/fvm
-brew install leoafarias/fvm/fvm
-./cleanupHomebrew.bash
+installBrewFormula leoafarias/fvm/fvm

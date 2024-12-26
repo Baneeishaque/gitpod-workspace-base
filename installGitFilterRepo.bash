@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./updateHomebrew.bash
-brew install git-filter-repo
-./cleanupHomebrew.bash
+source ./brewFormulaInstallHelper.bash
+
+installBrewFormula git-filter-repo
