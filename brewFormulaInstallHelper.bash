@@ -1,7 +1,8 @@
 #!/bin/bash
 
 installBrewFormula() {
+    local formula=$1
     ./updateHomebrew.bash
-    brew install $1
+    brew install $formula
     ./cleanupHomebrew.bash
 }

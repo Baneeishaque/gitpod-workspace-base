@@ -1,5 +1,7 @@
 #!/bin/bash
 
+eval $(gp env -e)
+
 cd /workspace
 if [ -d configurations-private ]; then
     cd configurations-private

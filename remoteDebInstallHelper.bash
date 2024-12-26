@@ -2,6 +2,7 @@
 
 installRemoteDeb() {
     local downloadUrl=$1
+    # echo $downloadUrl
     wget $downloadUrl
     local installationFile=$(basename $downloadUrl)
     ./updatePackageIndex.bash
