@@ -1,10 +1,10 @@
 #!/bin/bash
 
-dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
+source ./remoteDebInstallHelper.bash
+
+./updateHomebrew.bash
 brew install pup
-dBeaverDownloadUrl=$(echo $dBeaverDownloadPageUrl/$(wget -O - $dBeaverDownloadPageUrl | pup 'table.s3_listing_files tbody tr td a attr{href}' | grep '.deb'))
-wget $dBeaverDownloadUrl
-dBeaverInstallationFile=$(basename $dBeaverDownloadUrl)
-./updatePackageIndex.bash
-sudo apt install -y ./$dBeaverInstallationFile
-rm $dBeaverInstallationFile
+./cleanupHomebrew.bash
+
+dBeaverDownloadPageUrl="https://dbeaver.com/files/ea/ultimate"
+installRemoteDeb $(echo $dBeaverDownloadPageUrl/$(wget -O - $dBeaverDownloadPageUrl | pup 'table.s3_listing_files tbody tr td a attr{href}' | grep '.deb'))
