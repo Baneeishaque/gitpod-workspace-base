@@ -187,26 +187,4 @@ fi
 
 . $DIR/installAndroidSdk.bash
 
-fvm spawn "$user_version" create my_app
-cd my_app
-fvm spawn "$user_version" build bundle
-fvm spawn "$user_version" build apk
-fvm spawn "$user_version" build appbundle
-
-sudo apt update
-sudo apt install -y \
-      clang cmake git \
-      ninja-build pkg-config \
-      libgtk-3-dev liblzma-dev \
-      libstdc++-12-dev
-
-fvm spawn "$user_version" build linux
-fvm spawn "$user_version" build web
-cd ..
-rm -rf my_app
-
-fvm spawn "$user_version" create my_module --template=module
-cd my_module
-fvm spawn "$user_version" build aar
-cd ..
-rm -rf my_module
+. $DIR/InitializeFlutter.bash "$user_version"
