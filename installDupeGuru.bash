@@ -1,5 +1,4 @@
 #!/bin/bash
 
-sudo add-apt-repository -y ppa:dupeguru/ppa
-./updatePackageIndex.bash
+./addPpa.bash ppa:dupeguru/ppa
 sudo apt install -y dupeguru
