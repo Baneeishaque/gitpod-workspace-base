@@ -29,6 +29,9 @@ eval $(gp env -e) &&
             echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
             docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD)
     fi &&
+    if [ -v AZURE_DEVOPS_EXT_PAT ]; then
+        echo "export AZURE_DEVOPS_EXT_PAT=$(echo $AZURE_DEVOPS_EXT_PAT)" >>~/.bashrc
+    fi &&
     if [ ! -d vscode-insider-user-data ]; then
         mkdir vscode-insider-user-data
     fi &&
