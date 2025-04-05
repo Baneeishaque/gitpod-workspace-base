@@ -1,7 +1,8 @@
 #!/bin/bash
 
 source ./brewFormulaInstallHelper.bash
+source ./addToBashConfigurationHelper.bash
 
 installBrewFormula mise
 
-echo 'eval "$(mise activate bash)"' >> ~/.bashrc
+addToBashConfiguration 'eval "$(mise activate bash)"'
