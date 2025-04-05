@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./addToBashConfigurationHelper.bash
+
 installBrewFormula() {
     local formula=$1
     ./updateHomebrew.bash
@@ -21,4 +23,23 @@ installBrewFormulaAfterSystemAppRemoval() {
         echo "No existing $1 found. Proceeding with installation."
     fi
     installBrewFormula $1
+}
+
+installBrewFormulaWithBashConfigurations() {
+    if [ -z "$1" ]; then
+        echo "Error: No formula name provided."
+        return 1
+    fi
+
+    if [ -z "$2" ]; then
+        echo "Error: No configuration to add."
+        return 1
+    fi
+
+    if installBrewFormula "$1"; then
+        addToBashConfiguration "$2"
+    else
+        echo "Installation of $1 failed. Skipping configuration update."
+        return 1
+    fi
 }
