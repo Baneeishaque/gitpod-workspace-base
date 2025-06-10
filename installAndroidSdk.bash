@@ -1,8 +1,8 @@
-cd /workspace
-if [ ! -d Android/Sdk ]; then
+if [ ! -d /workspace/Android/Sdk ]; then
     ./updateHomebrew.bash
     brew install pup
     ./cleanupHomebrew.bash
+    cd /workspace
     androidCommandLineToolsLinuxDownloadUrl="https://dl.google.com/android/repository/$(wget -O - "https://developer.android.com/studio#command-tools" | pup '[data-modal-dialog-id="sdk_linux_download"] text{}')"
     wget $androidCommandLineToolsLinuxDownloadUrl
     androidCommandLineToolsArchieve=$(basename $androidCommandLineToolsLinuxDownloadUrl)
