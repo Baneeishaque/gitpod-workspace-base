@@ -8,11 +8,18 @@ if [ -d configurations-private ]; then
         git stash
         git fetch
         git pull
+        if ! git rev-parse --verify Gitpod >/dev/null 2>&1; then
+            git checkout -b Gitpod origin/Gitpod
+        else
+            git checkout Gitpod
+        fi
         git stash pop
         cd ..
 else
     if [ -v CONFIGURATION_REPOSITORY_URL ]; then
         git clone $(echo $CONFIGURATION_REPOSITORY_URL)
+        cd configurations-private
+        git checkout -b Gitpod origin/Gitpod
     fi
 fi
 
