@@ -6,6 +6,7 @@ cd /workspace
 if [ -d configurations-private ]; then
     cd configurations-private
         git stash
+        git fetch
         git pull
         git stash pop
         cd ..
