@@ -1,3 +1,5 @@
+source ./installAndroidSdkComponents.bash
+
 if [ ! -d /workspace/Android/Sdk ]; then
     ./updateHomebrew.bash
     brew install pup
@@ -12,4 +14,16 @@ if [ ! -d /workspace/Android/Sdk ]; then
     rmdir cmdline-tools/
     rm $androidCommandLineToolsArchieve
     yes | /workspace/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+fi
+
+# Check if java is available
+if command -v java &>/dev/null; then
+    # Check if sdkmanager is available
+    if command -v sdkmanager &>/dev/null; then
+        install_android_components
+    else
+        echo "sdkmanager not found."
+    fi
+else
+    echo "java not found."
 fi

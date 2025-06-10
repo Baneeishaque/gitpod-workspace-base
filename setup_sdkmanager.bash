@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ./update_zprofile.bash
+source ./installAndroidSdkComponents.bash
+
 setup_sdkmanager() {
     # Function to set ANDROID_HOME and make it permanent
     set_android_home() {
@@ -36,14 +39,6 @@ setup_sdkmanager() {
     # Enable signing licenses
     enable_licenses() {
         fvm spawn "$user_version" doctor --android-licenses
-    }
-
-    # Install required Android components using sdkmanager
-    install_android_components() {
-        sdkmanager --install \
-            "platforms;android-35" \
-            "platform-tools" \
-            "build-tools;35.0.0"
     }
 
     # Check if sdkmanager is available
