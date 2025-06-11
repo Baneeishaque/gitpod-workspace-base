@@ -2,7 +2,7 @@
 
 source ./ensure_homebrew.bash
 source ./update_zprofile.bash
-source ./setup_sdkmanager.bash
+source ./setupSdkManager.bash
 
 user_version=${1:-master}
 
