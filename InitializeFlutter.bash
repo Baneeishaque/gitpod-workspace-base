@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ./ensure_homebrew.bash
-source ./update_zprofile.bash
+source ./updateZProfile.bash
 source ./setupSdkManager.bash
 
 user_version=${1:-master}

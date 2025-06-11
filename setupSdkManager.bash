@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./update_zprofile.bash
+source ./updateZProfile.bash
 source ./installAndroidSdkComponents.bash
 
 setup_sdkmanager() {
