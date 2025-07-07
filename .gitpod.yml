@@ -31,3 +31,34 @@ jetbrains:
   phpstorm:
     prebuilds:
       version: both
+
+vscode:
+  extensions:
+    # - vscode.json
+    # - vscode.json-language-features
+    # - vscode.shellscript
+    # - vscode.yaml
+    # - vscode.terminal-suggest
+    # - vscode.search-result
+    # - vscode.references-view
+    # - vscode.merge-conflict
+    # - vscode.git-base
+    # - vscode.git
+    # - vscode.configuration-editing
+    # - vscode.markdown
+    # - vscode.markdown-language-features
+    # - vscode.docker
+    # - quentininguidee.gitignore-ultimate
+    - adamraichu.zip-viewer
+    # - github.vscode-pull-request-github
+    - pkief.material-icon-theme
+    - github.vscode-github-actions
+    - sanjulaganepola.github-local-actions
+    # - ms-vscode-remote.remote-containers
+    - ms-azuretools.vscode-containers
+    # - github.copilot
+    # - github.copilot-chat
+    - nick-rudenko.back-n-forth
+    - fittentech.fitten-code
+    # - redhat.vscode-yaml
+    - eamodio.gitlens
