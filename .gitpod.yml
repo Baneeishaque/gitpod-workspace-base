@@ -48,6 +48,7 @@ vscode:
     # - vscode.markdown
     # - vscode.markdown-language-features
     # - vscode.docker
+    # - vscode.media-preview
     # - quentininguidee.gitignore-ultimate
     - adamraichu.zip-viewer
     # - github.vscode-pull-request-github
