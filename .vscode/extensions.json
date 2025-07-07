@@ -29,5 +29,7 @@
         "fittentech.fitten-code",
         "redhat.vscode-yaml",
         "eamodio.gitlens",
+        "vscode.html",
+        "vscode.html-language-features",
     ]
 }
