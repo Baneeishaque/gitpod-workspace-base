@@ -1,4 +1,18 @@
 #!/bin/bash
+
+append_to_bashrc() {
+    local var_name=$1
+    local var_value=$2
+
+    if ! grep -Fxq "export $var_name=$var_value" ~/.bashrc; then
+        if grep -Fq "$var_name=" ~/.bashrc; then
+            echo "Variable $var_name is already set with a different value in ~/.bashrc. Not overwriting."
+        else
+            echo "export $var_name=$var_value" >> ~/.bashrc
+        fi
+    fi
+}
+
 script_dir="$(dirname "$(realpath "$0")")" &&
     eval $(gp env -e) &&
     if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ]; then
@@ -15,24 +29,24 @@ script_dir="$(dirname "$(realpath "$0")")" &&
             rm setup
     fi &&
     if [ -v GH_TOKEN ]; then
-        echo "export GH_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc
-    fi &&
-    if [ -v GH_TOKEN ] && [ -v GETGIST_USER ]; then
-        echo "export GETGIST_TOKEN=$(echo $GH_TOKEN)" >>~/.bashrc &&
-            echo "export GETGIST_USER=$(echo $GETGIST_USER)" >>~/.bashrc
+        append_to_bashrc GH_TOKEN "$GH_TOKEN"
+        if [ -v GETGIST_USER ]; then
+            append_to_bashrc GETGIST_USER "$GETGIST_USER"
+            append_to_bashrc GETGIST_TOKEN "$GH_TOKEN"
+        fi
     fi &&
     if [ -v GITLAB_TOKEN ]; then
-        echo "export GITLAB_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
-        echo "export GITLAB_ACCESS_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
-        echo "export OAUTH_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
+        append_to_bashrc GITLAB_TOKEN "$GITLAB_TOKEN"
+        append_to_bashrc GITLAB_ACCESS_TOKEN "$GITLAB_TOKEN"
+        append_to_bashrc OAUTH_TOKEN "$GITLAB_TOKEN"
     fi &&
     if [ -v DOCKER_HUB_USERNAME ] && [ -v DOCKER_HUB_PASSWORD ]; then
-        echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >>~/.bashrc &&
-            echo "export DOCKER_HUB_PASSWORD=$(echo $DOCKER_HUB_PASSWORD)" >>~/.bashrc &&
-            docker login --username $(echo $DOCKER_HUB_USERNAME) --password $(echo $DOCKER_HUB_PASSWORD)
+        append_to_bashrc DOCKER_HUB_USERNAME "$DOCKER_HUB_USERNAME"
+        append_to_bashrc DOCKER_HUB_PASSWORD "$DOCKER_HUB_PASSWORD"
+        docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD"
     fi &&
     if [ -v AZURE_DEVOPS_EXT_PAT ]; then
-        echo "export AZURE_DEVOPS_EXT_PAT=$(echo $AZURE_DEVOPS_EXT_PAT)" >>~/.bashrc
+        append_to_bashrc AZURE_DEVOPS_EXT_PAT "$AZURE_DEVOPS_EXT_PAT"
     fi &&
     if [ ! -d vscode-insider-user-data ]; then
         mkdir vscode-insider-user-data
