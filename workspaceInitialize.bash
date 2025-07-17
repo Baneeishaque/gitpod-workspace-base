@@ -58,5 +58,5 @@ eval $(gp env -e) &&
         ln -s downloads "$userDownloadsFolder"
     fi &&
     git config --global credential.credentialStore cache &&
-    git config --global credential.helper 'cache --timeout=3600' &&
+    git config --global credential.helper 'cache --timeout=18000' &&
     source ~/.bashrc
