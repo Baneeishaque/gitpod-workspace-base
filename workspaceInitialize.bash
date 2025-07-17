@@ -23,6 +23,8 @@ script_dir="$(dirname "$(realpath "$0")")" &&
     fi &&
     if [ -v GITLAB_TOKEN ]; then
         echo "export GITLAB_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
+        echo "export GITLAB_ACCESS_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
+        echo "export OAUTH_TOKEN=$(echo $GITLAB_TOKEN)" >>~/.bashrc
     fi &&
     if [ -v DOCKER_HUB_USERNAME ] && [ -v DOCKER_HUB_PASSWORD ]; then
         echo "export DOCKER_HUB_USERNAME=$(echo $DOCKER_HUB_USERNAME)" >>~/.bashrc &&
