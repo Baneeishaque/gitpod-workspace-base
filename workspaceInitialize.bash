@@ -1,6 +1,6 @@
 #!/bin/bash
-
-eval $(gp env -e) &&
+script_dir="$(dirname "$(realpath "$0")")" &&
+    eval $(gp env -e) &&
     if [ -v BASH_HUB_ACCESS_TOKEN ] && [ -v BASH_HUB_SYSTEM_NAME ]; then
         bashHubConfigurationFolder=$HOME/.bashhub &&
             if [ ! -d $bashHubConfigurationFolder ]; then
@@ -57,6 +57,25 @@ eval $(gp env -e) &&
     if [ ! -h "$userDownloadsFolder" ]; then
         ln -s downloads "$userDownloadsFolder"
     fi &&
-    git config --global credential.credentialStore cache &&
-    git config --global credential.helper 'cache --timeout=18000' &&
+    cd "$script_dir" &&
+    if [ -f ./copyConfigurations.bash ]; then
+        ./copyConfigurations.bash
+        if [ $? -eq 0 ]; then
+            if [ -f /workspace/configurations-private/.gitconfig ]; then
+                rm -f ~/.gitconfig
+                ln -s /workspace/configurations-private/.gitconfig ~/.gitconfig
+                if [ -f ~/.gitconfig ]; then
+                    echo "Link to .gitconfig created successfully."
+                else
+                    echo "Error: ~/.gitconfig is not a file after linking."
+                fi
+            else
+                echo "Error: .gitconfig does not exist in /workspace/configurations-private."
+            fi
+        else
+            echo "Error: copyConfigurations.bash did not run successfully."
+        fi
+    else
+        echo "Error: copyConfigurations.bash does not exist."
+    fi &&
     source ~/.bashrc
