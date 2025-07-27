@@ -8,14 +8,21 @@ installBrewFormula() {
         return 1
     fi
 
+    local use_cask=${2:-false}
+    local install_cmd="brew install"
+
+    if [ "$use_cask" = "true" ]; then
+        install_cmd="brew install --cask"
+    fi
+
     echo "Updating Homebrew..."
     if ! ./updateHomebrew.bash; then
         echo "Error: Homebrew update failed."
         return 1
     fi
 
-    echo "Installing formula $1..."
-    if ! brew install "$1"; then
+    echo "Installing formula $1... (cask: $use_cask)"
+    if ! $install_cmd "$1"; then
         echo "Error: Formula installation failed."
         return 1
     fi
@@ -36,6 +43,7 @@ installBrewFormulaAfterSystemAppRemoval() {
         return 1
     fi
 
+    local use_cask=${2:-false}
     local systemAppPath=$(which $1)
     if [ -n "$systemAppPath" ]; then
         if [ -f "$systemAppPath" ]; then
@@ -52,7 +60,7 @@ installBrewFormulaAfterSystemAppRemoval() {
     else
         echo "No existing $1 found. Proceeding with installation."
     fi
-    installBrewFormula $1
+    installBrewFormula "$1" "$use_cask"
 }
 
 installBrewFormulaWithBashConfigurations() {
@@ -66,7 +74,9 @@ installBrewFormulaWithBashConfigurations() {
         return 1
     fi
 
-    if installBrewFormula "$1"; then
+    local use_cask=${3:-false}
+
+    if installBrewFormula "$1" "$use_cask"; then
         addToBashConfiguration "$2"
     else
         echo "Installation of $1 failed. Skipping configuration update."
