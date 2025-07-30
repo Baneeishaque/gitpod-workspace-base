@@ -30,6 +30,7 @@
         "nick-rudenko.back-n-forth",
         "fittentech.fitten-code",
         "redhat.vscode-yaml",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "TaichiKubo.dired-plus"
     ]
 }
