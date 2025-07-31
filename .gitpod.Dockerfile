@@ -16,8 +16,6 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 ENV FVM_CACHE_PATH=/workspace/fvm
 ENV PATH=$FVM_CACHE_PATH/default/bin:$HOME/.pub-cache/bin:$PATH
 
-RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && sdk update && sdk upgrade"
-
 ENV PATH=$PATH:/usr/lib/postgresql/16/bin
 ENV PGDATA=/home/gitpod/.pg_ctl/data
 ENV PATH=$PATH:$HOME/.pg_ctl/bin
