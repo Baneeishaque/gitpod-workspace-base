@@ -21,7 +21,7 @@ stages:
       displayName: Build & Push an image
       inputs:
         containerRegistry: 'Docker Hub'
-        repository: 'baneeishaque/gitpod-full-vnc-bh-phpMyAdmin-1846x968-idea-chrome-driver'
+        repository: 'baneeishaque/gitpod-workspace-base'
         command: 'buildAndPush'
         Dockerfile: '.gitpod.Dockerfile'
         tags: 'latest'

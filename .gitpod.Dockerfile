@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-base
 
 ENV BUILDKIT_PROGRESS=plain
 
