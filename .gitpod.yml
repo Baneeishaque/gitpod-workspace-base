@@ -17,7 +17,6 @@ tasks:
 
 # - name: Open Google Chrome
 #   command: bash launchGoogleChrome.bash
-
 jetbrains:
   intellij:
     prebuilds:
@@ -65,3 +64,4 @@ vscode:
     - fittentech.fitten-code
     # - redhat.vscode-yaml
     - eamodio.gitlens
+    - sleistner.vscode-fileutils
