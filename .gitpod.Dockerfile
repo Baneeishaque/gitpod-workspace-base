@@ -22,6 +22,3 @@ ENV PATH=$PATH:$HOME/.pg_ctl/bin
 ENV DATABASE_URL="postgresql://gitpod@localhost"
 
 ENV PATH=$PATH:$HOME/.dotnet/tools
-
-RUN brew update \
- && brew upgrade
