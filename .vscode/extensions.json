@@ -2,7 +2,6 @@
     "recommendations": [
         "vscode.json",
         "vscode.json-language-features",
-        "vscode.shellscript",
         "vscode.yaml",
         "vscode.terminal-suggest",
         "vscode.search-result",
