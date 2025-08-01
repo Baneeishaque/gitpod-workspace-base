@@ -54,8 +54,6 @@ vscode:
     - adamraichu.zip-viewer
     # - github.vscode-pull-request-github
     - pkief.material-icon-theme
-    - github.vscode-github-actions
-    - sanjulaganepola.github-local-actions
     # - ms-vscode-remote.remote-containers
     - ms-azuretools.vscode-containers
     # - github.copilot
