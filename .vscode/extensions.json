@@ -32,6 +32,7 @@
         "redhat.vscode-yaml",
         "eamodio.gitlens",
         "TaichiKubo.dired-plus",
-        "sleistner.vscode-fileutils"
+        "sleistner.vscode-fileutils",
+        "Google.geminicodeassist"
     ]
 }
