@@ -63,3 +63,4 @@ vscode:
     # - redhat.vscode-yaml
     - eamodio.gitlens
     - sleistner.vscode-fileutils
+    - semanticdiff.semanticdiff
