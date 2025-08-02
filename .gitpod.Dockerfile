@@ -1,4 +1,4 @@
-FROM gitpod/workspace-base
+FROM gitpod/workspace-base:2025-07-31-18-26-59
 
 ENV BUILDKIT_PROGRESS=plain
 
