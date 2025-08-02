@@ -29,6 +29,7 @@
     "vscode.references-view",
     "vscode.search-result",
     "vscode.terminal-suggest",
-    "vscode.yaml"
+    "vscode.yaml",
+    "exiasr.hadolint"
   ]
 }
