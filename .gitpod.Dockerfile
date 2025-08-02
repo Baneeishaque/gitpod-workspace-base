@@ -4,7 +4,9 @@ ENV BUILDKIT_PROGRESS=plain
 
 RUN echo "demo content to trigger rebuild due to the change in Dockerfile"
 
-RUN sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+USER root
+RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+USER gitpod
 
 ENV ANDROID_HOME="/workspace/Android/Sdk"
 ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
