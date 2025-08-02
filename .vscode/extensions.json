@@ -30,6 +30,7 @@
     "vscode.search-result",
     "vscode.terminal-suggest",
     "vscode.yaml",
-    "exiasr.hadolint"
+    "exiasr.hadolint",
+    "ms-vscode.powershell"
   ]
 }
