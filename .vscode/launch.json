@@ -16,7 +16,7 @@
             "name": "powershell_scripts/sort_vscode_recommendations.ps1",
             "type": "PowerShell",
             "request": "launch",
-            "script": "powershell_scripts/sort_vscode_recommendations.ps1",
+            "script": "${workspaceFolder}/powershell_scripts/sort_vscode_recommendations.ps1",
             "args": []
         }
     ]
