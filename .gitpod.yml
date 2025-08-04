@@ -13,7 +13,7 @@ ports:
 
 tasks:
   - name: Initialize Workspace
-    command: bash bash_scripts/gitpod_related_scripts/workspaceInitialize.bash
+    command: bash workspaceInitialize.bash
 
 # - name: Open Google Chrome
 #   command: bash launchGoogleChrome.bash
