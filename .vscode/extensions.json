@@ -2,6 +2,7 @@
   "recommendations": [
     "adamraichu.zip-viewer",
     "eamodio.gitlens",
+    "exiasr.hadolint",
     "fittentech.fitten-code",
     "github.copilot",
     "github.copilot-chat",
@@ -9,6 +10,7 @@
     "Google.geminicodeassist",
     "ms-azuretools.vscode-containers",
     "ms-vscode-remote.remote-containers",
+    "ms-vscode.powershell",
     "nick-rudenko.back-n-forth",
     "pkief.material-icon-theme",
     "quentinguidee.gitignore-ultimate",
@@ -29,8 +31,7 @@
     "vscode.references-view",
     "vscode.search-result",
     "vscode.terminal-suggest",
-    "vscode.yaml",
-    "exiasr.hadolint",
-    "ms-vscode.powershell"
+    "vscode.yaml"
   ]
 }
+
