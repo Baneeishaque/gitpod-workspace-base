@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "adamraichu.zip-viewer",
+    "donjayamanne.githistory",
     "eamodio.gitlens",
     "exiasr.hadolint",
     "fittentech.fitten-code",
@@ -8,8 +9,10 @@
     "github.copilot-chat",
     "github.vscode-pull-request-github",
     "Google.geminicodeassist",
+    "hashhar.gitattributes",
     "jannek-aalto.shell-function-outline",
     "lang2hong.githd",
+    "mhutchie.git-graph",
     "mads-hartmann.bash-ide-vscode",
     "moshfeu.compare-folders",
     "moshfeu.diff-merge",
