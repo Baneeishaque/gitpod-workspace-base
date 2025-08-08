@@ -26,3 +26,12 @@ ENV DATABASE_URL="postgresql://gitpod@localhost"
 ENV PATH=$PATH:$HOME/.dotnet/tools
 
 ENV PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+
+USER root
+RUN echo 'Dir::Cache::Archives "/workspace/apt-cache";\nBinary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/99persistent-cache
+USER gitpod
+
+ENV HOMEBREW_INSTALL_FROM_API=1 \
+    HOMEBREW_CACHE="/workspace/homebrew-cache" \
+    MISE_CACHE_DIR="/workspace/mise-cache" \
+    MISE_DATA_DIR="/workspace/mise-data"
