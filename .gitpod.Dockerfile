@@ -16,7 +16,7 @@ ENV KONAN_DATA_DIR=/workspace/.konan/
 ENV PATH=$HOME/apktool:$PATH
 
 ENV FVM_CACHE_PATH=/workspace/fvm
-ENV PATH=$FVM_CACHE_PATH/default/bin:$HOME/.pub-cache/bin:$PATH
+ENV PATH=$FVM_CACHE_PATH/default/bin:$PATH
 
 ENV PATH=$PATH:/usr/lib/postgresql/16/bin
 ENV PGDATA=/home/gitpod/.pg_ctl/data
@@ -45,5 +45,6 @@ ENV PIP_CACHE_DIR="/workspace/pip_cache"
 ENV PYTHONPYCACHEPREFIX="/workspace/pycache"
 
 ENV PUB_CACHE="/workspace/dart_pub_cache"
+ENV PATH=$PUB_CACHE/bin:$PATH
 
 ENV GOMODCACHE="/workspace/go_mod_cache"
