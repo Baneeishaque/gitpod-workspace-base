@@ -28,7 +28,7 @@ ENV PATH=$PATH:$HOME/.dotnet/tools
 ENV PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 
 USER root
-RUN echo 'Dir::Cache::Archives "/workspace/apt-cache";\nBinary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/99persistent-cache
+RUN printf 'Dir::Cache::Archives "/workspace/apt-cache";\nBinary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/99persistent-cache
 USER gitpod
 
 ENV HOMEBREW_INSTALL_FROM_API=1 \
