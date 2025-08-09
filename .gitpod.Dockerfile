@@ -31,7 +31,8 @@ USER root
 RUN printf 'Dir::Cache::Archives "/workspace/apt-cache";\nBinary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/99persistent-cache
 USER gitpod
 
-ENV HOMEBREW_INSTALL_FROM_API=1 \
-    HOMEBREW_CACHE="/workspace/homebrew-cache" \
-    MISE_CACHE_DIR="/workspace/mise-cache" \
-    MISE_DATA_DIR="/workspace/mise-data"
+ENV HOMEBREW_INSTALL_FROM_API=1
+ENV HOMEBREW_CACHE="/workspace/homebrew-cache"
+
+ENV MISE_CACHE_DIR="/workspace/mise-cache"
+ENV MISE_DATA_DIR="/workspace/mise-data"
