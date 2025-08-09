@@ -13,7 +13,7 @@ ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PA
 
 ENV KONAN_DATA_DIR=/workspace/.konan/
 
-ENV PATH=$HOME/apktool:$PATH
+# ENV PATH=$HOME/apktool:$PATH
 
 ENV FVM_CACHE_PATH=/workspace/fvm
 ENV PATH=$FVM_CACHE_PATH/default/bin:$PATH
