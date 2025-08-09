@@ -68,3 +68,9 @@ ENV COMPOSER_CACHE_DIR="/workspace/php_composer"
 ENV NUGET_PACKAGES="/workspace/nuget_packages"
 ENV DOTNET_CLI_HOME="/workspace/dotnet"
 ENV PATH=$PATH:$DOTNET_CLI_HOME/tools
+
+ENV SBT_OPTS="-Dsbt.ivy.home=/workspace/sbt_ivy -Dsbt.boot.directory=/workspace/sbt_boot"
+ENV COURSIER_CACHE="/workspace/sbt_coursier"
+
+RUN mkdir -p $HOME/.m2 && \
+    echo '<settings>\n\t<localRepository>/workspace/maven_repo</localRepository>\n</settings>' > $HOME/.m2/settings.xml
