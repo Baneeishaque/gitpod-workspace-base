@@ -23,8 +23,6 @@ ENV PGDATA=/home/gitpod/.pg_ctl/data
 ENV PATH=$PATH:$HOME/.pg_ctl/bin
 ENV DATABASE_URL="postgresql://gitpod@localhost"
 
-ENV PATH=$PATH:$HOME/.dotnet/tools
-
 ENV PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 
 USER root
@@ -48,3 +46,25 @@ ENV PUB_CACHE="/workspace/dart_pub_cache"
 ENV PATH=$PUB_CACHE/bin:$PATH
 
 ENV GOMODCACHE="/workspace/go_mod_cache"
+
+ENV CCACHE_DIR="/workspace/ccache"
+
+ENV R_LIBS="/workspace/r_libs"
+
+ENV IVY_CACHE_DIR="/workspace/ant_ivy"
+
+ENV CARGO_HOME="/workspace/rust_cargo"
+ENV CARGO_TARGET_DIR="/workspace/rust_target"
+
+ENV CABAL_DIR="/workspace/haskell_cabal"
+ENV CABAL_STORE_DIR="/workspace/haskell_store"
+ENV STACK_ROOT="/workspace/haskell_stack"
+
+ENV OPAMROOT="/workspace/ocaml_opam"
+ENV DUNE_CACHE_ROOT="/workspace/ocaml_dune"
+
+ENV COMPOSER_CACHE_DIR="/workspace/php_composer"
+
+ENV NUGET_PACKAGES="/workspace/nuget_packages"
+ENV DOTNET_CLI_HOME="/workspace/dotnet"
+ENV PATH=$PATH:$DOTNET_CLI_HOME/tools
