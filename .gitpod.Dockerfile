@@ -36,3 +36,5 @@ ENV HOMEBREW_CACHE="/workspace/homebrew-cache"
 
 ENV MISE_CACHE_DIR="/workspace/mise-cache"
 ENV MISE_DATA_DIR="/workspace/mise-data"
+
+ENV GRADLE_USER_HOME="/workspace/.gradle"
