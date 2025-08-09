@@ -38,3 +38,12 @@ ENV MISE_CACHE_DIR="/workspace/mise-cache"
 ENV MISE_DATA_DIR="/workspace/mise-data"
 
 ENV GRADLE_USER_HOME="/workspace/.gradle"
+
+ENV NPM_CONFIG_CACHE="/workspace/npm-cache"
+
+ENV PIP_CACHE_DIR="/workspace/pip_cache"
+ENV PYTHONPYCACHEPREFIX="/workspace/pycache"
+
+ENV PUB_CACHE="/workspace/dart_pub_cache"
+
+ENV GOMODCACHE="/workspace/go_mod_cache"
