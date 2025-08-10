@@ -73,3 +73,5 @@ vscode:
     - zaaack.markdown-editor
     - bierner.markdown-preview-github-styles
     # - nur-srijan.markdown-rich-preview
+    # - mushan.vscode-paste-image
+    # - jwevans.jwe-markdown-enhanced

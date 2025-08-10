@@ -60,6 +60,8 @@
   ],
   "additionalRecommendations": [
     "google.geminicodeassist",
+    "jwevans.jwe-markdown-enhanced",
+    "mushan.vscode-paste-image",
     "nur-srijan.markdown-rich-preview",
     "shd101wyy.markdown-preview-enhanced",
     "taichiKubo.dired-plus"
