@@ -29,7 +29,6 @@
     "semanticdiff.semanticdiff",
     "sleistner.vscode-fileutils",
     "solomonkinard.git-files",
-    "TaichiKubo.dired-plus",
     "timonwong.shellcheck",
     "TylerLeonhardt.vscode-inline-values-powershell",
     "vscode.configuration-editing",
@@ -55,7 +54,8 @@
     "ms-vscode-remote.remote-containers"
   ],
   "additionalRecommendations": [
-    "Google.geminicodeassist"
+    "Google.geminicodeassist",
+    "TaichiKubo.dired-plus"
   ],
   "onlyDesktopSupported": [
     "quentinguidee.gitignore-ultimate"
