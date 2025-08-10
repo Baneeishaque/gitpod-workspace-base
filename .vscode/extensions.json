@@ -21,7 +21,6 @@
     "ms-vscode.powershell",
     "nick-rudenko.back-n-forth",
     "pkief.material-icon-theme",
-    "quentinguidee.gitignore-ultimate",
     "redhat.vscode-yaml",
     "ryu1kn.partial-diff",
     "semanticdiff.semanticdiff",
@@ -46,13 +45,16 @@
     "vscode.terminal-suggest",
     "vscode.yaml"
   ],
-  "only-vscode-supported": [
+  "onlyVscodeSupported": [
     "github.copilot",
     "github.copilot-chat",
     "ms-vscode-remote.remote-containers"
   ],
-  "additional-recommendations": [
+  "additionalRecommendations": [
     "Google.geminicodeassist"
+  ],
+  "onlyDesktopSupported": [
+    "quentinguidee.gitignore-ultimate"
   ]
 }
 
