@@ -14,6 +14,7 @@
     "jannek-aalto.shell-function-outline",
     "jq-syntax-highlighting.jq-syntax-highlighting",
     "lang2hong.githd",
+    "mathematic.vscode-pdf",
     "mhutchie.git-graph",
     "mads-hartmann.bash-ide-vscode",
     "moshfeu.compare-folders",
@@ -62,7 +63,8 @@
     "TaichiKubo.dired-plus"
   ],
   "onlyDesktopSupported": [
-    "quentinguidee.gitignore-ultimate"
+    "quentinguidee.gitignore-ultimate",
+    "tomoki1207.pdf"
   ]
 }
 
