@@ -39,8 +39,10 @@
     "vscode.markdown-language-features",
     "vscode.media-preview",
     "vscode.merge-conflict",
+    "vscode.powershell",
     "vscode.references-view",
     "vscode.search-result",
+    "vscode.shellscript",
     "vscode.terminal-suggest",
     "vscode.yaml"
   ]
