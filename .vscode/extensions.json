@@ -2,6 +2,7 @@
   "recommendations": [
     "adamraichu.zip-viewer",
     "beaglefoot.awk-ide-vscode",
+    "DavidAnson.vscode-markdownlint",
     "donjayamanne.githistory",
     "eamodio.gitlens",
     "exiasr.hadolint",
@@ -25,6 +26,7 @@
     "rogalmic.bash-debug",
     "ryu1kn.partial-diff",
     "semanticdiff.semanticdiff",
+    "shd101wyy.markdown-preview-enhanced",
     "sleistner.vscode-fileutils",
     "solomonkinard.git-files",
     "timonwong.shellcheck",
@@ -44,7 +46,10 @@
     "vscode.search-result",
     "vscode.shellscript",
     "vscode.terminal-suggest",
-    "vscode.yaml"
+    "vscode.yaml",
+    "yzane.markdown-pdf",
+    "yzhang.markdown-all-in-one",
+    "ZainChen.json"
   ],
   "onlyVscodeSupported": [
     "github.copilot",

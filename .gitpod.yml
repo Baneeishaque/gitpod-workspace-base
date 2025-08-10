@@ -66,3 +66,7 @@ vscode:
     - semanticdiff.semanticdiff
     - donjayamanne.githistory
     - exiasr.hadolint
+    - DavidAnson.vscode-markdownlint
+    - yzhang.markdown-all-in-one
+    - shd101wyy.markdown-preview-enhanced
+    - yzane.markdown-pdf
