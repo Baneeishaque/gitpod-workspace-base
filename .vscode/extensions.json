@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "adamraichu.zip-viewer",
+    "beaglefoot.awk-ide-vscode",
     "donjayamanne.githistory",
     "eamodio.gitlens",
     "exiasr.hadolint",
