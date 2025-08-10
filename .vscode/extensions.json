@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "adamraichu.zip-viewer",
+    "bierner.markdown-preview-github-styles",
     "beaglefoot.awk-ide-vscode",
     "davidAnson.vscode-markdownlint",
     "donjayamanne.githistory",
@@ -27,7 +28,6 @@
     "rogalmic.bash-debug",
     "ryu1kn.partial-diff",
     "semanticdiff.semanticdiff",
-    "shd101wyy.markdown-preview-enhanced",
     "sleistner.vscode-fileutils",
     "solomonkinard.git-files",
     "timonwong.shellcheck",
@@ -60,7 +60,8 @@
   ],
   "additionalRecommendations": [
     "Google.geminicodeassist",
-    "TaichiKubo.dired-plus"
+    "shd101wyy.markdown-preview-enhanced",
+    "taichiKubo.dired-plus"
   ],
   "onlyDesktopSupported": [
     "quentinguidee.gitignore-ultimate",

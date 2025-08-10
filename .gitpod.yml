@@ -68,6 +68,6 @@ vscode:
     - exiasr.hadolint
     - DavidAnson.vscode-markdownlint
     - yzhang.markdown-all-in-one
-    - shd101wyy.markdown-preview-enhanced
+    # - shd101wyy.markdown-preview-enhanced
     - yzane.markdown-pdf
     - zaaack.markdown-editor
