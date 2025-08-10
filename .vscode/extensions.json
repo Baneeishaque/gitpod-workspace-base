@@ -2,7 +2,7 @@
   "recommendations": [
     "adamraichu.zip-viewer",
     "beaglefoot.awk-ide-vscode",
-    "DavidAnson.vscode-markdownlint",
+    "davidAnson.vscode-markdownlint",
     "donjayamanne.githistory",
     "eamodio.gitlens",
     "exiasr.hadolint",
@@ -30,7 +30,7 @@
     "sleistner.vscode-fileutils",
     "solomonkinard.git-files",
     "timonwong.shellcheck",
-    "TylerLeonhardt.vscode-inline-values-powershell",
+    "tylerLeonhardt.vscode-inline-values-powershell",
     "vscode.configuration-editing",
     "vscode.docker",
     "vscode.git",
@@ -50,7 +50,7 @@
     "yzane.markdown-pdf",
     "yzhang.markdown-all-in-one",
     "zaaack.markdown-editor",
-    "ZainChen.json"
+    "zainChen.json"
   ],
   "onlyVscodeSupported": [
     "github.copilot",
