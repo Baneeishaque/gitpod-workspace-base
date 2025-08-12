@@ -1,8 +1,8 @@
 {
   "recommendations": [
     "adamraichu.zip-viewer",
-    "bierner.markdown-preview-github-styles",
     "beaglefoot.awk-ide-vscode",
+    "bierner.markdown-preview-github-styles",
     "davidAnson.vscode-markdownlint",
     "donjayamanne.githistory",
     "eamodio.gitlens",
@@ -13,9 +13,9 @@
     "jannek-aalto.shell-function-outline",
     "jq-syntax-highlighting.jq-syntax-highlighting",
     "lang2hong.githd",
+    "mads-hartmann.bash-ide-vscode",
     "mathematic.vscode-pdf",
     "mhutchie.git-graph",
-    "mads-hartmann.bash-ide-vscode",
     "moshfeu.compare-folders",
     "moshfeu.diff-merge",
     "ms-vscode.powershell",
