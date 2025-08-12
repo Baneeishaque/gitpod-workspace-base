@@ -57,6 +57,7 @@
   ],
   "additionalRecommendations": [
     "continue.continue",
+    "gocodeo.gocodeo",
     "google.geminicodeassist",
     "jwevans.jwe-markdown-enhanced",
     "mushan.vscode-paste-image",
