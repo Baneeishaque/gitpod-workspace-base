@@ -33,6 +33,8 @@
     "vscode.docker",
     "vscode.git",
     "vscode.git-base",
+    "vscode.html",
+    "vscode.html-language-features",
     "vscode.json",
     "vscode.json-language-features",
     "vscode.markdown",
