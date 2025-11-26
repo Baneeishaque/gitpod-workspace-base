@@ -7,12 +7,10 @@
     "donjayamanne.githistory",
     "eamodio.gitlens",
     "exiasr.hadolint",
-    "fittentech.fitten-code",
     "github.vscode-pull-request-github",
     "hashhar.gitattributes",
     "jannek-aalto.shell-function-outline",
     "jq-syntax-highlighting.jq-syntax-highlighting",
-    "lang2hong.githd",
     "mads-hartmann.bash-ide-vscode",
     "mathematic.vscode-pdf",
     "mhutchie.git-graph",
@@ -27,7 +25,6 @@
     "ryu1kn.partial-diff",
     "semanticdiff.semanticdiff",
     "sleistner.vscode-fileutils",
-    "solomonkinard.git-files",
     "timonwong.shellcheck",
     "tylerLeonhardt.vscode-inline-values-powershell",
     "vscode.configuration-editing",
@@ -76,4 +73,3 @@
     "ms-azuretools.vscode-containers"
   ]
 }
-
